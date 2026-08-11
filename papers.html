@@ -3,10 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Dr. Riley Tucker</title>
+    <meta name="description" content="Peer-reviewed publications by Riley Tucker on gangs, place management, ambient populations, and computational methods in criminology." />
+    <meta name="author" content="Riley Tucker" />
+    <title>Papers | Riley Tucker — Computational Criminology</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Open Graph / social link previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Riley Tucker" />
+    <meta property="og:title" content="Papers | Riley Tucker" />
+    <meta property="og:description" content="Peer-reviewed publications by Riley Tucker on gangs, place management, ambient populations, and computational methods in criminology." />
+    <meta property="og:url" content="https://www.rileytucker.com/papers.html" />
+    <meta property="og:image" content="https://www.rileytucker.com/assets/img/headshot.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Papers | Riley Tucker" />
+    <meta name="twitter:description" content="Peer-reviewed publications by Riley Tucker on gangs, place management, ambient populations, and computational methods in criminology." />
+    <meta name="twitter:image" content="https://www.rileytucker.com/assets/img/headshot.jpg" />
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
@@ -55,9 +66,23 @@
                             <h2 class="section-heading mb-4">
                                 <span class="section-heading-upper">Scholarly Publications</span>
                             </h2>
+                            <p><a href="assets/cv_26_8_11.pdf" download>Download CV</a> — <a href="https://scholar.google.com/citations?hl=en&user=j8TVqU8AAAAJ" target="_blank" rel="noopener">Google Scholar</a></p>
                             <ul>
                                 <li>
-                                    <h3> "EBK" : Leveraging Crowd-Sourced Social Media Data to Quantify How Hyperlocal Gang Affiliations Shape 
+                                    <h3> "Eyes" on the Street: Using Computer Vision to Get the Gist of How Environmental Design Shapes Crime Across Neighborhoods. 2026.
+                                        <i>Journal of Quantitative Criminology</i> <b>Riley Tucker</b>, Alfred Chao, Nakwon Rim, Elizabeth Gaillard, Gaby Akcelik, & Marc G. Berman </h3>
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1007/s10940-026-09675-5" class="paper-button" target="_blank">Paper</a>
+                                    </p>
+                                    <div class="abstract">
+                                    <p>Assess the crime prevention through environmental design (CPTED) framework as a neighborhood theory and propose a new computational approach for measuring place visuals. Inspired by lessons from cognitive psychology, this approach augments object-based measures of environments (e.g., how many trees are present) with measures of visual 'gists' capturing broad image assessments.</p>
+                                    <p>4,800 respondents were surveyed to provide human ratings of five CPTED-inspired gist metrics (preference, complexity, memorability, transparency, and enclosure) for 8,249 Chicago Google Street View images. Gist metrics were evaluated and interpreted using monte carlo-based reliability simulations and hierarchical linear models. Using residual neural networks, we trained a series of computer vision models that could predict human-rated gist scores on new images. After validating out-of-sample performance, these models were applied to estimate CPTED gist scores on a larger set of 187,048 Chicago street-view images. Multi-level variance decomposition analysis was used to probe the nested geographic structure of gist metrics. XGBoost were used to evaluate whether gist features were correlated with crime and prosociality (as measured via voting participation rates).</p>
+                                    <p>Human-rated gist assessments were highly reliable across participants and were correlated with both the object composition of images and demographic features of the pictured neighborhood. AI-assigned gist labels correlated highly with human-ratings, suggesting very strong out-of-sample accuracy for all gist models. Variance decomposition results suggested CPTED gists substantially vary across census tracts even when accounting for micro-spatial visual differences. XGBoost results suggested violent crime is best predicted using object-based measures, non-violent crime is best predicted using gist measures, and voting participation is best explained using both sets of image features.</p>
+                                    <p>Aggregate neighborhood visual features are important for understanding why some places experience more crime. Future research should seek to understand how broad visual gists and the presence of specific objects interact to shape behavior and decision-making among guardians, offenders, and targets.</p>
+                                    </div>
+                                </li>
+                                <li id="ebk">
+                                    <h3> "EBK" : Leveraging Crowd-Sourced Social Media Data to Quantify How Hyperlocal Gang Affiliations Shape
                                         Networks and Violence in Chicago. 2025. <i>Journal of Quantitative Criminology</i> <b>Riley Tucker</b>, Nakwon Rim, Alfred Chao, Elizabeth Gaillard, Marc G. 
                                         Berman  </h3>
                                     <p><a href="#" class="abstract-toggle">Abstract</a>
@@ -134,7 +159,9 @@
                                  <li>
                                     <h3> Quantifying urban environments: Aesthetic Preference Through the Lens of Prospect-Refuge Theory. 2024.
                                         <i>Journal of Environmental Psychology</i> Gaby N Akcelik, Kyoung Whan Choe, Monica D Rosenberg, Kathryn E Schertz, Kimberly L Meidenbauer, Tianxin Zhang, Nakwon Rim, <b>Riley Tucker</b>, Emily Talen, & Marc G Berman </h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1016/j.jenvp.2024.102344" class="paper-button" target="_blank">Paper</a>
+                                    </p>
                                     <div class="abstract">
                                     <p class="abstract">Prospect-refuge theory suggests that people prefer environments that offer both prospect, the ability to scan for resources, and refuge, a safe place 
                                         to hide. Urban planners, architects and researchers alike have had a tendency to use prospect-refuge theory research on natural scenes to inform on the design of urban 
@@ -155,7 +182,9 @@
                                 <li>
                                     <h3>The Emergence and Evolution of Problematic Properties: Onset, Persistance, Aggravation, and Desistance. 2023.
                                         <i>Journal of Quantitative Criminology</i> Dan O'Brien, Alina Ristea, <b>Riley Tucker</b>, Forrest Hangen.  </h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1007/s10940-022-09542-z" class="paper-button" target="_blank">Paper</a>
+                                    </p>
                                     <div class="abstract">
                                     <p>Objectives: Scholars and practitioners have paid increasing attention to problematic properties, but little is known about how they emerge and evolve. We
                                         examine four phenomena suggested by life-course theory that reflect stability and change in crime and disorder at properties: onset of issues; 
@@ -171,11 +200,14 @@
                                         to a mixture of violence and disorder. Desistance was more likely to occur as de-escalations along these pathways then complete cessation of issues. In 
                                         neighborhoods with above-average crime, persistence was more prevalent whereas desistance less often culminated in cessation, even relative to local 
                                         expectations.</p>
+                                    </div>
                                 </li>
                                     <li>
-                                    <h3>Evidence for environmental influences on impulsivity and aggression. 2023.
-                                        <i>PsyArXiv</i> Kimberly Lewis Meidenbauer, Kathryn Schertz, Elizabeth Janey, Andrew Stier, Anya Leslie Samtani, Kathryn Gehrke, Riley Tucker, Mahedi Hasan, Marc Berman </h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
+                                    <h3>Evidence for environmental influences on impulsivity and aggression. 2025.
+                                        <i>Urban Forestry & Urban Greening</i> Kimberly Lewis Meidenbauer, Kathryn Schertz, Elizabeth Janey, Andrew Stier, Anya Leslie Samtani, Kathryn Gehrke, Riley Tucker, Mahedi Hasan, Marc Berman </h3>
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1016/j.ufug.2024.128594" class="paper-button" target="_blank">Paper</a>
+                                    </p>
                                     <div class="abstract">
                                     <p>Research examining the effects of physical environments on individual behaviors often focuses
                                        on self-reported exposures or spatially-derived aggregate exposures. However, to gain a more
@@ -196,10 +228,13 @@
                                         anger, and economic hardship was only predictive of physical aggression (not verbal, anger, or
                                         hostility). While correlational in nature, these results demonstrate that environmental exposures
                                         are associated with individual differences in impulsivity and aggression across multiple levels of analysis. </p>
-                                </li> 
+                                    </div>
+                                </li>
                                 <li>
                                     <h3>Different Places, Different Problems: Profiles of Crime and Disorder at Residential Parcels. 2022. <i>Crime Science</i> Dan O'Brien, Alina Ristea, Forrest Hangen, & <b>Riley Tucker.</b>  </h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1186/s40163-022-00165-0" class="paper-button" target="_blank">Paper</a>
+                                    </p>
                                     <p class="abstract">Certain places generate inordinate amounts of crime and disorder. We examine how places differ in their nature of crime and disorder, 
                                         with three objectives: (1) identifying a typology of profiles of crime and disorder; (2) assessing whether different forms of crime and disorder 
                                         co-locate at parcels; and (3) determining whether problematic parcels explain crime and disorder across neighborhoods. The study uses 911 and 311 
@@ -214,7 +249,9 @@
                                 <li>
                                     <h3>Police Shooting Mortality: Investigating Individual, Incident, and Contextual Factors Differentiating Fatal and Non-Fatal Police Shootings.
                                         2022. <i>Journal of Ethnicity in Criminal Justice</i> Keller Sheppard & <b>Riley Tucker.</b> </h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1080/15377938.2022.2122648" class="paper-button" target="_blank">Paper</a>
+                                    </p>
                                     <p class="abstract">Research on relevance of race and community context for police shooting mortality is underdeveloped. We collected data on 623 
                                         police-involved shootings in the state of Texas to examine which incident- and county-level factors are associated with shooting outcomes. In doing so, 
                                         we incorporate a novel incident-level variable: distance from incident to trauma hospitals. Results from hierarchical linear models suggest that the 
@@ -224,7 +261,9 @@
                                  <li>
                                     <h3>A Multisource Database Tracking the Impact of the COVID-19 Pandemic on the Communities of Boston, MA, USA.2022.
                                         <i>Scientific Data</i> Alina Ristea, <b>Riley Tucker</b>, et al.</h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1038/s41597-022-01378-3" class="paper-button" target="_blank">Paper</a>
+                                    </p>
                                     <p class="abstract">A pandemic, like other disasters, changes how systems work. In order to support research on how the COVID-19 pandemic impacted 
                                         the dynamics of a single metropolitan area and the communities therein, we developed and made publicly available a “data-support system” for the city 
                                         of Boston. We actively gathered data from multiple administrative (e.g., 911 and 311 dispatches, building permits) and internet sources (e.g., Yelp, 
@@ -236,13 +275,19 @@
                                  </li>
                                 <li>
                                     <h3>2022. Social Ties and Collective Efficacy as Predictors of Volunteeering. 2022. <i>Community Development </i>  <b>Riley Tucker</b> & Micheal Gearhart </h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
-                                    <p class="abstract">This is the abstract of publication 3.</p>
-                                </li> 
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1080/15575330.2021.1943697" class="paper-button" target="_blank">Paper</a>
+                                    </p>
+                                    <div class="abstract">
+                                    <p>Volunteering has been defined as any activity to which (1) an individual devotes their free time; and (2) a second person or group receives a benefit (Wilson, 2000). Research consistently demonstrates that volunteering has multiple positive outcomes on both individuals and neighborhoods. It is important to understand the factors that promote volunteering given its positive impact on multiple outcomes. Previous research suggests that volunteering is influenced by complex interrelationships among individual and neighborhood level characteristics. Social ties and collective efficacy are two neighborhood social processes that warrant further study. The present study attempts to refine our understanding of the relationships among these constructs by using a sample of 7,556 individuals embedded within 342 neighborhood clusters from the Project on Human Development in Chicago Neighborhoods (PHDCN). We use hierarchical linear modeling to test whether collective efficacy and social ties are associated with two forms of volunteering: activism and organizational participation. In addition, we assess whether the relationships between neighborhood social processes and individual behavior are mediated by individuals' perceptions of neighborhood processes.</p>
+                                    </div>
+                                </li>
                                 <li>
                                     <h3> Who 'Tweets' Where and When, and How Does it Help Understand Crime Rates at Places? Measuring the Presence of Tourists and Commuters in Ambient Populations.  
                                         2021. <i>Journal of Quantitative Criminology </i> <b>Riley Tucker</b>, Dan O'Brien, Alex Ciomek, Edgar Castro, Qi Wang, and Nolan Phillips. </h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1007/s10940-020-09487-1" class="paper-button" target="_blank">Paper</a>
+                                    </p>
                                     <div class="abstract">
                                     <p>Objectives: Test the reliability of geotagged Twitter data for estimating block-level population metrics across place types. Evaluate whether the proportion of 
                                         Twitter users on a block at a given time who are local residents, inter-metro commuters, or tourists is correlated with incidences of public violence and
@@ -258,17 +303,24 @@
                                     <p>Conclusions: Consistent with routine activities and crime pattern theories, the influx of outsiders in a given location impacts the likelihood of crime 
                                         occurring there. While we find that data from Twitter users can be valuable for measuring block-level ambient populations, it appears this is not true 
                                         for residential blocks. Future research may further consider how the characteristics of Twitter users may inform spatial patterns in crime.</p>
-                                </li>    
+                                    </div>
+                                </li>
                                 <li>
                                     <h3> Criminogenic Risk, Criminogenic Need, Collective Efficacy, and Juvenile Delinquency. 2020.
                                         <i>Criminal Justice and Behavior </i> Micheal Gearhart & <b>Riley Tucker</b>. </h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
-                                    <p class="abstract">This is the abstract of publication 3.</p>
-                                </li> 
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1177/0093854820928568" class="paper-button" target="_blank">Paper</a>
+                                    </p>
+                                    <div class="abstract">
+                                    <p>Juvenile delinquency is influenced by reciprocal relationships between micro-level and macro-level factors. The risk, need, and responsivity (RNR) model, and collective efficacy theory are two commonly used frameworks in juvenile justice research. This study builds on previous research by testing indicators of both the RNR model and collective efficacy theory as predictors of self-reported juvenile delinquency utilizing data from the Fragile Families and Child Wellbeing Study. Taken as a whole, our findings suggest that individual-level factors are strong predictors of self-reported juvenile delinquency, whereas the relationship between collective efficacy and juvenile delinquency is limited. This finding emphasizes the importance of addressing individual needs when implementing community-level interventions aimed at preventing delinquency. Failure to do so may result in merely displacing juvenile delinquency as opposed to helping youth desist from delinquent behaviors.</p>
+                                    </div>
+                                </li>
                                 <li>
                                     <h3>Neighborhood Through a Familial Lens: Examining the Intergenerational Transmission of Collective Efficacy. 2019
                                         <i>Journal of Development and Life-Course Criminology</i> Greg Zimmerman, <b>Riley Tucker</b>, & Jacob Stowell.  </h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1007/s40865-019-00124-5" class="paper-button" target="_blank">Paper</a>
+                                    </p>
                                     <div class="abstract">
                                     <p>Purpose: Despite the rich history of empirical research on neighborhood collective efficacy, studies considering the factors that contribute to 
                                         collective efficacy formation at the individual level have yet to account for family members’ perceptions of collective efficacy. This study examines 
@@ -284,11 +336,14 @@
                                     <p>Conclusion: Findings suggest that neighborhood collective efficacy can be altered through family processes as well as by changing the structural 
                                         characteristics of broader social settings. Increasing collective efficacy—and social capital more generally—may be best facilitated intergenerationally 
                                         from parents to their children.</p>
-                                </li> 
+                                    </div>
+                                </li>
                                 <li>
-                                    <h3>Examining the (Dis)Agreement Between Etiology and Consequences of Adults' and Youths' Perceptions of Collective Efficacy in 
+                                    <h3>Examining the (Dis)Agreement Between Etiology and Consequences of Adults' and Youths' Perceptions of Collective Efficacy in
                                         Boston. 2019. <i>Journal of Research in Crime and Delinquency </i> <b>Riley Tucker</b>, Greg Zimmerman, Jacob Stowell, David Squier Jones. </h3>
-                                    <p><a href="#" class="abstract-toggle">Abstract</a></p>
+                                    <p><a href="#" class="abstract-toggle">Abstract</a>
+                                       <a href="https://doi.org/10.1177/0022427819859638" class="paper-button" target="_blank">Paper</a>
+                                    </p>
                                     <div class="abstract">
                                     <p>Objectives: To examine the extent to which adults’ and youths’ perceptions of collective efficacy align, the shared and unique correlates of adults’ 
                                         and youths’ perceptions, and the effects of adults’ and youths’ perceptions on youths’ violence.</p>
@@ -302,7 +357,8 @@
                                         violence.</p>
                                     <p>Conclusions: Adults’ and youths’ perceptions of collective efficacy represent distinct constructs. Research should focus on the divergent processes 
                                         through which adults’ and youths’ perceptions are generated and the differential effects of adults’ and youths’ perceptions on youths’ behaviors.</p>
-                                </li>                            
+                                    </div>
+                                </li>
                                 <!-- Add more list items for additional publications -->
                             </ul>
                         </div>
@@ -312,7 +368,7 @@
         </div>
     </section>
     <footer class="footer text-faded text-center py-5">
-       <p>rileytucker@uchicago.edu</p>
+       <p>rqt5439@psu.edu</p>
        <div class="container"><p class="m-0 small"><a href="https://www.vecteezy.com/free-photos">Free Stock photos by Vecteezy</a></p></div>
     </footer>
     <!-- Bootstrap core JS-->

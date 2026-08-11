@@ -1,0 +1,322 @@
+/*
+  Theme overrides layered on top of styles.css (Start Bootstrap "Business Casual").
+  Palette: ink-navy structure, gold accent, cool paper ground.
+  Type: Zilla Slab (headings), Lora (body, inherited from styles.css), IBM Plex Mono (labels/metadata).
+*/
+
+:root {
+  --paper: #F3F3EF;
+  --paper-raised: #FFFFFF;
+  --ink: #171B22;
+  --ink-soft: #5B6472;
+  --navy: #1B2740;
+  --navy-soft: #2B3A5C;
+  --gold: #B9812C;
+  --gold-bright: #C99435;
+  --line: rgba(23, 27, 34, 0.12);
+  --serif-display: "Zilla Slab", Georgia, "Iowan Old Style", serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+body {
+  background-image: none;
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+a {
+  color: var(--gold);
+}
+a:hover {
+  color: var(--gold-bright);
+}
+
+h1, h2, h3, h4, h5, h6,
+.site-heading, .section-heading {
+  font-family: var(--serif-display);
+  font-weight: 600;
+}
+
+/* Nav */
+#mainNav {
+  background-color: var(--navy);
+  border-bottom: 2px solid var(--gold);
+  font-family: var(--mono);
+}
+#mainNav .navbar-brand {
+  color: #F4F1E8;
+  font-family: var(--serif-display);
+  font-weight: 600;
+}
+#mainNav .navbar-nav .nav-item .nav-link {
+  color: #C7CEDB;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+}
+#mainNav .navbar-nav .nav-item.active .nav-link {
+  color: #fff;
+  border-bottom-color: var(--gold);
+}
+@media (min-width: 992px) {
+  #mainNav .navbar-nav .nav-item .nav-link:hover {
+    color: #fff;
+    border-bottom-color: var(--gold);
+  }
+  #mainNav .navbar-nav .nav-item.active .nav-link:hover {
+    color: #fff;
+  }
+}
+
+/* Site heading (home masthead, unused once hero ships, kept for safety) */
+.text-faded { color: #E7DEC7; }
+
+/* Section headings: drop the old boxed/uppercase treatment for clean editorial headers */
+.section-heading {
+  text-transform: none;
+}
+.section-heading .section-heading-upper {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: block;
+}
+
+/* Old "floating card" backgrounds neutralized -- content now sits directly on the page */
+.bg-faded {
+  background-color: transparent;
+}
+
+/* Eyebrow label -- small mono kicker above a heading */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* Section divider rhythm */
+.page-section {
+  border-top: 1px solid var(--line);
+  padding-top: 3.5rem;
+}
+.page-section:first-of-type,
+section.page-section.hero-section {
+  border-top: none;
+}
+
+/* Buttons */
+.btn-primary {
+  --bs-btn-bg: var(--navy);
+  --bs-btn-border-color: var(--navy);
+  --bs-btn-hover-bg: var(--navy-soft);
+  --bs-btn-hover-border-color: var(--navy-soft);
+  --bs-btn-active-bg: var(--navy-soft);
+  --bs-btn-active-border-color: var(--navy-soft);
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+}
+.btn-outline-secondary {
+  --bs-btn-color: var(--ink);
+  --bs-btn-border-color: var(--ink);
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-hover-color: var(--gold);
+  --bs-btn-hover-border-color: var(--gold);
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+}
+.btn-xl {
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--navy);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+.footer a {
+  color: #EADFC2;
+}
+.footer a:hover {
+  color: var(--gold-bright);
+}
+
+/* ---------- Homepage hero ---------- */
+.hero-section {
+  padding-top: 3.5rem;
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+  align-items: center;
+}
+.hero-photo-wrap {
+  position: relative;
+}
+.hero-photo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -14px -14px auto auto;
+  width: 65%;
+  height: 65%;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 14px 14px;
+  z-index: 0;
+}
+.hero-photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 18px 40px -18px rgba(23, 27, 34, 0.35);
+  margin: 0;
+}
+.hero h1.name {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 4vw, 3.1rem);
+  line-height: 1.06;
+  margin: 0 0 1rem;
+  text-wrap: balance;
+  color: var(--ink);
+  text-align: left;
+  text-transform: none;
+}
+.hero .tagline {
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  max-width: 52ch;
+  margin: 0 0 1.6rem;
+  text-align: left;
+}
+.hero .cta-row {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+@media (max-width: 991px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-photo-wrap {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+/* Bio paragraph */
+.bio-text {
+  max-width: 64ch;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* ---------- Publications / course lists ---------- */
+.entry-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.entry-list > li {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+}
+.entry-list > li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+.entry-list h3, .entry-list h5 {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 1.12rem;
+  line-height: 1.4;
+  margin: 0 0 0.5rem;
+}
+.entry-list h3 i, .entry-list h5 i {
+  color: var(--ink-soft);
+}
+.entry-list > li > p:first-of-type {
+  margin-bottom: 0.75rem;
+}
+.entry-list > li > p > a {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--navy);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 1px;
+  margin-right: 1rem;
+  display: inline-block;
+}
+.abstract-toggle:hover,
+.paper-button:hover {
+  color: var(--gold);
+}
+.abstract p {
+  color: var(--ink-soft);
+}
+
+/* CV / Scholar link line under a section heading */
+.meta-links {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+}
+
+/* ---------- Current Research ---------- */
+.research-block {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+.research-block:nth-of-type(even) .research-media {
+  order: 2;
+}
+.research-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 18px 40px -18px rgba(23, 27, 34, 0.35);
+}
+.research-body h2 {
+  margin-bottom: 1rem;
+}
+.research-body p {
+  color: var(--ink);
+  max-width: 56ch;
+}
+@media (max-width: 991px) {
+  .research-block, .research-block:nth-of-type(even) .research-media {
+    grid-template-columns: 1fr;
+    order: 0;
+  }
+}

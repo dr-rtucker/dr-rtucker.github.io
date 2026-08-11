@@ -120,12 +120,18 @@ section.page-section.hero-section {
 
 /* Buttons */
 .btn-primary {
+  --bs-btn-color: #fff;
   --bs-btn-bg: var(--navy);
   --bs-btn-border-color: var(--navy);
+  --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: var(--navy-soft);
   --bs-btn-hover-border-color: var(--navy-soft);
+  --bs-btn-active-color: #fff;
   --bs-btn-active-bg: var(--navy-soft);
   --bs-btn-active-border-color: var(--navy-soft);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--navy);
+  --bs-btn-disabled-border-color: var(--navy);
   font-family: var(--mono);
   letter-spacing: 0.04em;
 }

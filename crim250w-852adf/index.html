@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CRIM 250W Grade Outlook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: form column (your scores) beside a results column (outlook, points ledger, targets); stacks on phones */
+:root {
+  --bg: #f3f6f7;
+  --surface: #ffffff;
+  --ink: #16232a;
+  --muted: #586a74;
+  --line: #d6dfe3;
+  --accent: #1d5c78;
+  --accent-soft: #dcebf2;
+  --available: #9cc7d9;
+  --lost: #cdd5d9;
+  --pace: #b85f14;
+  --good: #2c7a4b;
+  --warn: #946100;
+  --bad: #ad3b2b;
+  --band-a: #e6f0f4;
+  --band-b: #f2f5f6;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-num: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f161a; --surface: #162026; --ink: #e3ebee; --muted: #93a6b0; --line: #2a3a42;
+    --accent: #72b6d4; --accent-soft: #1d3440; --available: #2e5b6e; --lost: #33424a;
+    --pace: #eb9d55; --good: #63c48b; --warn: #e3b450; --bad: #ef7e6a;
+    --band-a: #1a2a32; --band-b: #141d22; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f161a; --surface: #162026; --ink: #e3ebee; --muted: #93a6b0; --line: #2a3a42;
+  --accent: #72b6d4; --accent-soft: #1d3440; --available: #2e5b6e; --lost: #33424a;
+  --pace: #eb9d55; --good: #63c48b; --warn: #e3b450; --bad: #ef7e6a;
+  --band-a: #1a2a32; --band-b: #141d22; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+}
+.page {
+  max-width: 1120px; margin: 0 auto;
+  padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 24px;
+}
+header { display: grid; gap: 6px; }
+.eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); line-height: 1.1; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--font-display); font-size: 20px; margin: 0; text-wrap: balance; }
+h3 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.lede { color: var(--muted); max-width: 68ch; margin: 0; }
+.num { font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+
+.layout { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 860px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: grid; gap: 18px; min-width: 0; }
+.results { display: grid; gap: 24px; min-width: 0; }
+
+/* Form */
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; }
+legend { padding: 0; margin-bottom: 8px; display: flex; justify-content: space-between; width: 100%; gap: 8px; align-items: baseline; }
+legend h2 { font-size: 17px; }
+.weight { font-family: var(--font-num); font-size: 13px; color: var(--muted); }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) 96px; gap: 10px; align-items: center; }
+.row label { font-size: 15px; }
+.row label small { display: block; color: var(--muted); font-size: 13px; }
+input[type="number"] {
+  width: 100%; font: 600 15px var(--font-num); color: var(--ink);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; text-align: right;
+}
+input[type="number"]::placeholder { color: var(--muted); font-weight: 500; }
+input:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hint { font-size: 13px; color: var(--muted); margin: 0; }
+details { border-top: 1px dashed var(--line); padding-top: 10px; }
+summary { cursor: pointer; font-size: 14px; color: var(--accent); font-weight: 600; }
+details .inner { display: grid; gap: 10px; margin-top: 10px; }
+.divider { border: 0; border-top: 1px solid var(--line); margin: 0; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+button {
+  font: 600 14px var(--font-body); border-radius: 6px; padding: 8px 14px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+}
+button:hover { border-color: var(--accent); color: var(--accent); }
+.notice { font-size: 14px; padding: 10px 12px; border-radius: 6px; background: var(--accent-soft); color: var(--ink); margin: 0; }
+.err { color: var(--bad); font-size: 13px; margin: 0; }
+
+/* Headline numbers */
+.headline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 520px) { .headline { grid-template-columns: minmax(0, 1fr); } }
+.stat { display: grid; gap: 2px; padding: 14px 16px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); }
+.stat .label { font-size: 13px; color: var(--muted); font-weight: 600; }
+.stat .value { font: 700 32px/1.1 var(--font-num); font-variant-numeric: tabular-nums; }
+.stat .letter { font: 600 15px var(--font-body); }
+.stat.pace .value { color: var(--pace); }
+.stat.max .value { color: var(--accent); }
+.stat .sub { font-size: 13px; color: var(--muted); }
+
+/* Range bar */
+.range { display: grid; gap: 10px; }
+.track { position: relative; height: 54px; }
+.bands { position: absolute; inset: 0 0 22px 0; display: flex; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+.band { height: 100%; border-right: 1px solid var(--line); position: relative; }
+.band:last-child { border-right: 0; }
+.band:nth-child(odd) { background: var(--band-a); }
+.band:nth-child(even) { background: var(--band-b); }
+.band span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font: 700 12px var(--font-body); color: var(--muted); white-space: nowrap; }
+.span { position: absolute; top: 9px; height: 14px; background: var(--available); border-radius: 7px; opacity: .9; }
+.mark { position: absolute; top: 4px; width: 0; }
+.mark i { position: absolute; left: -8px; top: 0; width: 16px; height: 24px; display: block; }
+.mark.cur i { background: var(--ink); width: 4px; left: -2px; border-radius: 2px; }
+.mark.pace i { background: var(--pace); width: 14px; height: 14px; left: -7px; top: 5px; border-radius: 50%; border: 2px solid var(--surface); }
+.ticks { position: absolute; left: 0; right: 0; bottom: 0; height: 18px; }
+.ticks span { position: absolute; transform: translateX(-50%); font: 500 11px var(--font-num); color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { display: inline-block; width: 14px; height: 10px; border-radius: 3px; }
+
+/* Points ledger */
+.ledger { display: grid; gap: 14px; }
+.lrow { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px; align-items: center; }
+@media (max-width: 520px) { .lrow { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+.lname { font-weight: 600; font-size: 15px; }
+.lname small { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+.lbar-wrap { display: grid; gap: 4px; min-width: 0; }
+.lbar { position: relative; height: 22px; display: flex; border-radius: 4px; overflow: hidden; background: var(--bg); }
+.seg { height: 100%; }
+.seg.secured { background: var(--accent); }
+.seg.avail { background: var(--available); }
+.seg.lost { background: repeating-linear-gradient(135deg, var(--lost) 0 5px, transparent 5px 9px); }
+.lpace { position: absolute; top: -3px; bottom: -3px; width: 3px; background: var(--pace); border-radius: 2px; }
+.lnums { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--muted); }
+.lnums b { color: var(--ink); font-family: var(--font-num); font-weight: 700; }
+
+/* Targets table */
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); }
+th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+td.need { font-family: var(--font-num); font-variant-numeric: tabular-nums; font-weight: 700; }
+.chip { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.chip.secured { color: var(--good); }
+.chip.ok { color: var(--accent); }
+.chip.stretch { color: var(--warn); }
+.chip.out { color: var(--muted); }
+tr.is-pace td { background: var(--accent-soft); }
+
+.foot { font-size: 13px; color: var(--muted); max-width: 80ch; display: grid; gap: 6px; }
+.foot p { margin: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .span, .mark, .seg, .lpace { transition: left .25s ease, width .25s ease; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header>
+    <div class="eyebrow">CRIM 250W · Fall 2026</div>
+    <h1>Where is my grade headed?</h1>
+    <p class="lede">Enter the scores you see in Canvas. The page shows your current grade, where you finish if you keep scoring the way you have been, and the highest grade still possible. Nothing you type leaves your browser.</p>
+  </header>
+
+  <div class="layout">
+    <form class="panel" id="scoreForm" autocomplete="off" novalidate>
+      <p class="notice" id="exampleNotice">These are example numbers. Replace them with your own scores, or press <b>Clear all</b> to start blank.</p>
+
+      <fieldset>
+        <legend><h2>Writing assignment</h2><span class="weight">35% of grade</span></legend>
+        <div class="row"><label for="w1">Part I <small>Your role &amp; the problem · 3%</small></label><input type="number" id="w1" min="0" max="110" step="any" placeholder="—"></div>
+        <div class="row"><label for="w2">Part II <small>Relevant literature · 7%</small></label><input type="number" id="w2" min="0" max="110" step="any" placeholder="—"></div>
+        <div class="row"><label for="w3">Part III <small>Proposing research · 10%</small></label><input type="number" id="w3" min="0" max="110" step="any" placeholder="—"></div>
+        <div class="row"><label for="w4">Part IV <small>Final report · 15%</small></label><input type="number" id="w4" min="0" max="110" step="any" placeholder="—"></div>
+        <p class="hint">Score as a percent (e.g. 88). Leave blank if not graded yet.</p>
+      </fieldset>
+
+      <hr class="divider">
+
+      <fieldset>
+        <legend><h2>Exams</h2><span class="weight">45% of grade</span></legend>
+        <div class="row"><label for="e1">Exam 1 <small>22.5%</small></label><input type="number" id="e1" min="0" max="110" step="any" placeholder="—"></div>
+        <div class="row"><label for="e2">Exam 2 <small>22.5%</small></label><input type="number" id="e2" min="0" max="110" step="any" placeholder="—"></div>
+      </fieldset>
+
+      <hr class="divider">
+
+      <fieldset>
+        <legend><h2>Weekly quizzes</h2><span class="weight">20% of grade</span></legend>
+        <div class="row"><label for="qn">Quizzes so far <small>Out of 12. Count missed quizzes.</small></label><input type="number" id="qn" min="0" max="12" step="1" placeholder="0"></div>
+        <div class="row"><label for="qa">Your quiz average <small>Percent, missed quizzes as 0</small></label><input type="number" id="qa" min="0" max="110" step="any" placeholder="—"></div>
+        <details id="dropDetails">
+          <summary>Add your three lowest quiz scores (optional)</summary>
+          <div class="inner">
+            <p class="hint">Your 3 lowest quizzes are dropped at the end of the semester. Adding them makes the projection more accurate.</p>
+            <div class="row"><label for="ql1">Lowest quiz score</label><input type="number" id="ql1" min="0" max="110" step="any" placeholder="—"></div>
+            <div class="row"><label for="ql2">Second-lowest quiz score</label><input type="number" id="ql2" min="0" max="110" step="any" placeholder="—"></div>
+            <div class="row"><label for="ql3">Third-lowest quiz score</label><input type="number" id="ql3" min="0" max="110" step="any" placeholder="—"></div>
+          </div>
+        </details>
+      </fieldset>
+
+      <p class="err" id="formError" hidden></p>
+      <div class="actions">
+        <button type="button" id="clearBtn">Clear all</button>
+        <button type="button" id="exampleBtn">Load example</button>
+      </div>
+    </form>
+
+    <div class="results">
+      <section class="panel" aria-labelledby="outlookHead">
+        <h2 id="outlookHead">Your outlook</h2>
+        <div class="headline">
+          <div class="stat"><span class="label">Current grade</span><span class="value" id="curVal">—</span><span class="letter" id="curLet"></span><span class="sub">Graded work only</span></div>
+          <div class="stat pace"><span class="label">At your current pace</span><span class="value" id="paceVal">—</span><span class="letter" id="paceLet"></span><span class="sub">Final grade if you keep it up</span></div>
+          <div class="stat max"><span class="label">Highest possible</span><span class="value" id="maxVal">—</span><span class="letter" id="maxLet"></span><span class="sub">100% on everything left</span></div>
+        </div>
+        <div class="range">
+          <div class="track" id="track">
+            <div class="bands" id="bands"></div>
+            <div class="span" id="rangeSpan"></div>
+            <div class="mark cur" id="markCur"><i></i></div>
+            <div class="mark pace" id="markPace"><i></i></div>
+            <div class="ticks" id="ticks"></div>
+          </div>
+          <div class="legend">
+            <span><i class="sw" style="background:var(--available)"></i>Final grades still possible (0% to 100% on remaining work)</span>
+            <span><i class="sw" style="background:var(--ink);width:4px"></i>Current</span>
+            <span><i class="sw" style="background:var(--pace);width:10px;border-radius:50%"></i>Current pace</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="ledgerHead">
+        <div style="display:grid;gap:4px">
+          <h2 id="ledgerHead">Your 100 course points</h2>
+          <p class="hint">Each category is worth a set number of points toward your final grade. Points you have <b>earned</b> are yours no matter what. Points <b>still available</b> depend on work you have not done yet. The orange line shows where your current pace lands.</p>
+        </div>
+        <div class="ledger" id="ledger"></div>
+        <div class="legend">
+          <span><i class="sw" style="background:var(--accent)"></i>Earned</span>
+          <span><i class="sw" style="background:var(--available)"></i>Still available</span>
+          <span><i class="sw" style="background:repeating-linear-gradient(135deg,var(--lost) 0 3px,transparent 3px 5px);border:1px solid var(--line)"></i>Lost</span>
+          <span><i class="sw" style="background:var(--pace);width:3px"></i>Current pace</span>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="targetHead">
+        <div style="display:grid;gap:4px">
+          <h2 id="targetHead">What it takes</h2>
+          <p class="hint">The average you would need on all remaining work (writing, exams and quizzes) to finish with each grade. Your current-pace grade is highlighted.</p>
+        </div>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>Final grade</th><th>Needs at least</th><th>Average needed on remaining work</th><th>Status</th></tr></thead>
+            <tbody id="targetBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="foot">
+        <p>Weights come from the syllabus: writing parts 3%, 7%, 10% and 15%; two exams at 22.5% each; 12 quizzes worth 20% together, with the 3 lowest dropped. "Current pace" fills each unfinished item with your own average in that category. Your current grade counts every quiz you have taken; the three drops are applied to the projections.</p>
+        <p>This is an estimate to help you plan. Your official grade is the one in Canvas.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const WRITING = [{ id: "w1", w: 3 }, { id: "w2", w: 7 }, { id: "w3", w: 10 }, { id: "w4", w: 15 }];
+  const EXAMS = [{ id: "e1", w: 22.5 }, { id: "e2", w: 22.5 }];
+  const QUIZ_TOTAL = 12, QUIZ_DROPS = 3, QUIZ_WEIGHT = 20;
+  const SCALE = [["A", 95], ["A-", 90], ["B+", 87], ["B", 83], ["B-", 80], ["C+", 75], ["C", 70], ["D", 60], ["F", 0]];
+  const EXAMPLE = { w1: 92, w2: 84, w3: "", w4: "", e1: 78, e2: "", qn: 8, qa: 78, ql1: 0, ql2: 68, ql3: 75 };
+  const FIELDS = ["w1", "w2", "w3", "w4", "e1", "e2", "qn", "qa", "ql1", "ql2", "ql3"];
+  const STORE_KEY = "crim250w-grade-outlook-v1";
+  const $ = (id) => document.getElementById(id);
+
+  const letterFor = (p) => SCALE.find(([, cut]) => p >= cut)[0];
+  const fmt = (p) => (p == null || !isFinite(p) ? "—" : p.toFixed(1) + "%");
+
+  function readNum(id) {
+    const raw = $(id).value.trim();
+    if (raw === "") return null;
+    const v = Number(raw);
+    return isFinite(v) ? v : null;
+  }
+
+  function readState() {
+    const s = {};
+    for (const f of FIELDS) s[f] = readNum(f);
+    s.qn = s.qn == null ? 0 : Math.max(0, Math.min(QUIZ_TOTAL, Math.round(s.qn)));
+    return s;
+  }
+
+  // Reconstruct the student's quiz scores from average + count (+ optional lows).
+  function knownQuizScores(s) {
+    const n = s.qn;
+    if (n === 0 || s.qa == null) return { scores: [], warning: null };
+    let warning = null;
+    // Any lows the student entered are used; the remaining quizzes share whatever is left of the average.
+    const lows = [s.ql1, s.ql2, s.ql3].filter((v) => v != null);
+    if (lows.length && n > lows.length) {
+      const k = lows.length;
+      const rest = (n * s.qa - lows.reduce((a, b) => a + b, 0)) / (n - k);
+      if (rest + 1e-9 < Math.max(...lows) || rest > 110) {
+        warning = "Your lowest scores don't fit with your average. Check them; they are being ignored for now.";
+      } else {
+        return { scores: [...lows, ...Array(n - k).fill(rest)], warning: null };
+      }
+    }
+    return { scores: Array(n).fill(s.qa), warning };
+  }
+
+  function categoryAverages(s, quizScores) {
+    const avg = (items) => {
+      let pts = 0, wt = 0;
+      for (const it of items) if (s[it.id] != null) { pts += s[it.id] * it.w; wt += it.w; }
+      return wt ? pts / wt : null;
+    };
+    const quiz = quizScores.length ? quizScores.reduce((a, b) => a + b, 0) / quizScores.length : null;
+    return { writing: avg(WRITING), exams: avg(EXAMS), quiz };
+  }
+
+  // Course points per category when unfinished work is filled with the given scores.
+  function project(s, quizScores, fill) {
+    const pts = (items, f) => items.reduce((sum, it) => sum + (s[it.id] != null ? s[it.id] : f) * it.w / 100, 0);
+    const all = quizScores.concat(Array(QUIZ_TOTAL - quizScores.length).fill(fill.quiz));
+    const kept = all.slice().sort((a, b) => b - a).slice(0, QUIZ_TOTAL - QUIZ_DROPS);
+    const quizPct = kept.reduce((a, b) => a + b, 0) / kept.length;
+    const writing = pts(WRITING, fill.writing), exams = pts(EXAMS, fill.exams), quiz = quizPct * QUIZ_WEIGHT / 100;
+    return { writing, exams, quiz, total: writing + exams + quiz };
+  }
+
+  function render() {
+    const s = readState();
+    const { scores: quizScores, warning } = knownQuizScores(s);
+    const err = $("formError");
+    err.hidden = !warning; err.textContent = warning || "";
+
+    const avgs = categoryAverages(s, quizScores);
+    const parts = [[avgs.writing, WRITING.filter((i) => s[i.id] != null).reduce((a, i) => a + i.w, 0) ? 35 : 0],
+                   [avgs.exams, EXAMS.some((i) => s[i.id] != null) ? 45 : 0],
+                   [avgs.quiz, quizScores.length ? QUIZ_WEIGHT : 0]];
+    const wSum = parts.reduce((a, [, w]) => a + w, 0);
+    const current = wSum ? parts.reduce((a, [v, w]) => a + (w ? v * w : 0), 0) / wSum : null;
+
+    const hasData = current != null;
+    const paceFill = {
+      writing: avgs.writing ?? current, exams: avgs.exams ?? current, quiz: avgs.quiz ?? current,
+    };
+    const floor = project(s, quizScores, { writing: 0, exams: 0, quiz: 0 });
+    const ceil = project(s, quizScores, { writing: 100, exams: 100, quiz: 100 });
+    const pace = hasData ? project(s, quizScores, paceFill) : null;
+
+    $("curVal").textContent = fmt(current);
+    $("curLet").textContent = hasData ? letterFor(current) : "Enter a score to begin";
+    $("paceVal").textContent = fmt(pace && pace.total);
+    $("paceLet").textContent = pace ? letterFor(pace.total) : "";
+    $("maxVal").textContent = fmt(ceil.total);
+    $("maxLet").textContent = letterFor(ceil.total);
+
+    renderRange(floor.total, current, pace && pace.total, ceil.total);
+    renderLedger(floor, pace, ceil);
+    renderTargets(s, quizScores, floor.total, ceil.total, pace && pace.total);
+  }
+
+  function renderRange(lo, cur, pace, hi) {
+    // Zoom the axis so the letter bands are readable; start lower only if the floor needs it.
+    const start = Math.max(0, Math.min(50, Math.floor(lo / 10) * 10));
+    const pos = (v) => ((Math.max(start, Math.min(100, v)) - start) / (100 - start)) * 100;
+    const cuts = [start, 60, 70, 75, 80, 83, 87, 90, 95, 100].filter((c) => c >= start);
+    const names = { 60: "D", 70: "C", 75: "C+", 80: "B-", 83: "B", 87: "B+", 90: "A-", 95: "A" };
+    let bandHtml = "";
+    for (let i = 0; i < cuts.length - 1; i++) {
+      const width = pos(cuts[i + 1]) - pos(cuts[i]);
+      const label = names[cuts[i]] || "F";
+      bandHtml += `<div class="band" style="width:${width}%" title="${label}: ${cuts[i]}–${cuts[i + 1]}%"><span>${width > 4 ? label : ""}</span></div>`;
+    }
+    $("bands").innerHTML = bandHtml;
+    const tickVals = cuts.filter((c) => c % 10 === 0 || c === start);
+    $("ticks").innerHTML = tickVals.map((c) => `<span style="left:${pos(c)}%">${c}</span>`).join("");
+    $("rangeSpan").style.left = pos(lo) + "%";
+    $("rangeSpan").style.width = Math.max(0.8, pos(hi) - pos(lo)) + "%";
+    $("markCur").hidden = cur == null;
+    $("markPace").hidden = pace == null;
+    if (cur != null) $("markCur").style.left = pos(cur) + "%";
+    if (pace != null) $("markPace").style.left = pos(pace) + "%";
+  }
+
+  function renderLedger(floor, pace, ceil) {
+    const cats = [
+      { key: "writing", name: "Writing", weight: 35 },
+      { key: "exams", name: "Exams", weight: 45 },
+      { key: "quiz", name: "Quizzes", weight: QUIZ_WEIGHT, note: "3 lowest dropped" },
+    ];
+    const totalRow = { name: "Whole course", weight: 100, f: floor.total, c: ceil.total, p: pace && pace.total };
+    const rows = cats.map((c) => ({ name: c.name, note: c.note, weight: c.weight, f: floor[c.key], c: ceil[c.key], p: pace && pace[c.key] }));
+    rows.push(totalRow);
+    $("ledger").innerHTML = rows.map((r) => {
+      const pct = (v) => (v / r.weight) * 100;
+      const earned = Math.min(r.f, r.weight), avail = Math.max(0, Math.min(r.c, r.weight) - earned), lost = Math.max(0, r.weight - earned - avail);
+      const paceMark = r.p != null ? `<div class="lpace" style="left:calc(${Math.min(100, pct(r.p))}% - 1.5px)" title="Current pace: ${r.p.toFixed(1)} points"></div>` : "";
+      return `<div class="lrow">
+        <div class="lname">${r.name}<small>${r.weight} points${r.note ? " · " + r.note : ""}</small></div>
+        <div class="lbar-wrap">
+          <div class="lbar" role="img" aria-label="${r.name}: ${earned.toFixed(1)} earned, ${avail.toFixed(1)} still available, ${lost.toFixed(1)} lost, out of ${r.weight}">
+            <div class="seg secured" style="width:${pct(earned)}%"></div>
+            <div class="seg avail" style="width:${pct(avail)}%"></div>
+            <div class="seg lost" style="width:${pct(lost)}%"></div>
+            ${paceMark}
+          </div>
+          <div class="lnums"><span>Earned <b>${earned.toFixed(1)}</b></span><span>Still available <b>${avail.toFixed(1)}</b></span><span>Lost <b>${lost.toFixed(1)}</b></span>${r.p != null ? `<span>Pace <b>${r.p.toFixed(1)}</b></span>` : ""}</div>
+        </div>
+      </div>`;
+    }).join("");
+  }
+
+  function renderTargets(s, quizScores, lo, hi, pace) {
+    const paceLetter = pace != null ? letterFor(pace) : null;
+    const finalAt = (x) => project(s, quizScores, { writing: x, exams: x, quiz: x }).total;
+    const nothingLeft = hi - lo < 1e-6;
+    $("targetBody").innerHTML = SCALE.filter(([, cut]) => cut > 0).map(([letter, cut]) => {
+      let need, chip;
+      if (lo >= cut) { need = "Locked in"; chip = '<span class="chip secured">Already earned</span>'; }
+      else if (hi < cut || nothingLeft) { need = "—"; chip = '<span class="chip out">Out of reach</span>'; }
+      else {
+        let a = 0, b = 100;
+        for (let i = 0; i < 40; i++) { const m = (a + b) / 2; if (finalAt(m) >= cut) b = m; else a = m; }
+        need = b.toFixed(1) + "%";
+        chip = b > 92 ? '<span class="chip stretch">Stretch</span>' : '<span class="chip ok">Within reach</span>';
+      }
+      const cls = letter === paceLetter ? ' class="is-pace"' : "";
+      return `<tr${cls}><td><b>${letter}</b></td><td class="num">${cut}%</td><td class="need">${need}</td><td>${chip}</td></tr>`;
+    }).join("");
+  }
+
+  function save(isExample) {
+    try {
+      const data = { isExample };
+      for (const f of FIELDS) data[f] = $(f).value;
+      localStorage.setItem(STORE_KEY, JSON.stringify(data));
+    } catch (e) { /* storage unavailable; page still works */ }
+  }
+
+  function fill(values, isExample) {
+    for (const f of FIELDS) $(f).value = values[f] ?? "";
+    $("exampleNotice").hidden = !isExample;
+    if (isExample || values.ql1 || values.ql2 || values.ql3) $("dropDetails").open = true;
+    render();
+  }
+
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); } catch (e) { saved = null; }
+  if (saved && !saved.isExample) fill(saved, false); else fill(EXAMPLE, true);
+
+  $("scoreForm").addEventListener("input", () => { $("exampleNotice").hidden = true; save(false); render(); });
+  $("scoreForm").addEventListener("submit", (e) => e.preventDefault());
+  $("clearBtn").addEventListener("click", () => { fill({}, false); save(false); });
+  $("exampleBtn").addEventListener("click", () => { fill(EXAMPLE, true); save(true); });
+})();
+</script>
+</body>
+</html>

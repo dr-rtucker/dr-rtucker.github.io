@@ -202,16 +202,7 @@ tr.is-pace td { background: var(--accent-soft); }
       <fieldset>
         <legend><h2>Weekly quizzes</h2><span class="weight">20% of grade</span></legend>
         <div class="row"><label for="qn">Quizzes so far <small>Out of 12. Count missed quizzes.</small></label><input type="number" id="qn" min="0" max="12" step="1" placeholder="0"></div>
-        <div class="row"><label for="qa">Your quiz average <small>Percent, missed quizzes as 0</small></label><input type="number" id="qa" min="0" max="110" step="any" placeholder="—"></div>
-        <details id="dropDetails">
-          <summary>Add your three lowest quiz scores (optional)</summary>
-          <div class="inner">
-            <p class="hint">Your 3 lowest quizzes are dropped at the end of the semester. Adding them makes the projection more accurate.</p>
-            <div class="row"><label for="ql1">Lowest quiz score</label><input type="number" id="ql1" min="0" max="110" step="any" placeholder="—"></div>
-            <div class="row"><label for="ql2">Second-lowest quiz score</label><input type="number" id="ql2" min="0" max="110" step="any" placeholder="—"></div>
-            <div class="row"><label for="ql3">Third-lowest quiz score</label><input type="number" id="ql3" min="0" max="110" step="any" placeholder="—"></div>
-          </div>
-        </details>
+        <div class="row"><label for="qa">Your quiz average <small>Percent, as shown in Canvas</small></label><input type="number" id="qa" min="0" max="110" step="any" placeholder="—"></div>
       </fieldset>
 
       <p class="err" id="formError" hidden></p>
@@ -273,8 +264,7 @@ tr.is-pace td { background: var(--accent-soft); }
       </section>
 
       <div class="foot">
-        <p>Weights come from the syllabus: writing parts 3%, 7%, 10% and 15%; two exams at 22.5% each; 12 quizzes worth 20% together, with the 3 lowest dropped. "Current pace" fills each unfinished item with your own average in that category. Your current grade counts every quiz you have taken; the three drops are applied to the projections.</p>
-        <p>This is an estimate to help you plan. Your official grade is the one in Canvas.</p>
+        <p>Weights come from the syllabus: writing parts 3%, 7%, 10% and 15%; two exams at 22.5% each; 12 quizzes worth 20% together, with your 3 lowest dropped. The quiz average Canvas shows you already leaves out your lowest scores, so enter it as is. "Current pace" fills each unfinished item with your own average in that category.</p>
       </div>
     </div>
   </div>
@@ -286,8 +276,8 @@ tr.is-pace td { background: var(--accent-soft); }
   const EXAMS = [{ id: "e1", w: 22.5 }, { id: "e2", w: 22.5 }];
   const QUIZ_TOTAL = 12, QUIZ_DROPS = 3, QUIZ_WEIGHT = 20;
   const SCALE = [["A", 95], ["A-", 90], ["B+", 87], ["B", 83], ["B-", 80], ["C+", 75], ["C", 70], ["D", 60], ["F", 0]];
-  const EXAMPLE = { w1: 92, w2: 84, w3: "", w4: "", e1: 78, e2: "", qn: 8, qa: 78, ql1: 0, ql2: 68, ql3: 75 };
-  const FIELDS = ["w1", "w2", "w3", "w4", "e1", "e2", "qn", "qa", "ql1", "ql2", "ql3"];
+  const EXAMPLE = { w1: 92, w2: 84, w3: "", w4: "", e1: 78, e2: "", qn: 8, qa: 85 };
+  const FIELDS = ["w1", "w2", "w3", "w4", "e1", "e2", "qn", "qa"];
   const STORE_KEY = "crim250w-grade-outlook-v1";
   const $ = (id) => document.getElementById(id);
 
@@ -308,23 +298,12 @@ tr.is-pace td { background: var(--accent-soft); }
     return s;
   }
 
-  // Reconstruct the student's quiz scores from average + count (+ optional lows).
+  // Canvas's quiz average already excludes the dropped quizzes (it keeps at least one),
+  // so only the kept quizzes are modeled; the dropped ones stay dropped.
   function knownQuizScores(s) {
     const n = s.qn;
     if (n === 0 || s.qa == null) return { scores: [], warning: null };
-    let warning = null;
-    // Any lows the student entered are used; the remaining quizzes share whatever is left of the average.
-    const lows = [s.ql1, s.ql2, s.ql3].filter((v) => v != null);
-    if (lows.length && n > lows.length) {
-      const k = lows.length;
-      const rest = (n * s.qa - lows.reduce((a, b) => a + b, 0)) / (n - k);
-      if (rest + 1e-9 < Math.max(...lows) || rest > 110) {
-        warning = "Your lowest scores don't fit with your average. Check them; they are being ignored for now.";
-      } else {
-        return { scores: [...lows, ...Array(n - k).fill(rest)], warning: null };
-      }
-    }
-    return { scores: Array(n).fill(s.qa), warning };
+    return { scores: Array(Math.max(1, n - QUIZ_DROPS)).fill(s.qa), warning: null };
   }
 
   function categoryAverages(s, quizScores) {
@@ -340,7 +319,8 @@ tr.is-pace td { background: var(--accent-soft); }
   // Course points per category when unfinished work is filled with the given scores.
   function project(s, quizScores, fill) {
     const pts = (items, f) => items.reduce((sum, it) => sum + (s[it.id] != null ? s[it.id] : f) * it.w / 100, 0);
-    const all = quizScores.concat(Array(QUIZ_TOTAL - quizScores.length).fill(fill.quiz));
+    const remaining = quizScores.length ? QUIZ_TOTAL - s.qn : QUIZ_TOTAL;
+    const all = quizScores.concat(Array(remaining).fill(fill.quiz));
     const kept = all.slice().sort((a, b) => b - a).slice(0, QUIZ_TOTAL - QUIZ_DROPS);
     const quizPct = kept.reduce((a, b) => a + b, 0) / kept.length;
     const writing = pts(WRITING, fill.writing), exams = pts(EXAMS, fill.exams), quiz = quizPct * QUIZ_WEIGHT / 100;
@@ -461,7 +441,6 @@ tr.is-pace td { background: var(--accent-soft); }
   function fill(values, isExample) {
     for (const f of FIELDS) $(f).value = values[f] ?? "";
     $("exampleNotice").hidden = !isExample;
-    if (isExample || values.ql1 || values.ql2 || values.ql3) $("dropDetails").open = true;
     render();
   }
 

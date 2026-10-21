@@ -293,7 +293,7 @@ tr.is-pace td { background: var(--accent-soft); }
   </div>
 
       <div class="foot">
-        <p>Weights come from the syllabus: writing parts 3%, 7%, 10% and 15%; two exams at 22.5% each; 12 quizzes worth 20% together, with your 3 lowest dropped. The quiz average Canvas shows you already leaves out your lowest scores, so enter it as is. "Current pace" fills each unfinished item with your own average in that category.</p>
+        <p>Weights come from the syllabus: writing parts 3%, 7%, 10% and 15%; two exams at 22.5% each; 12 quizzes worth 20% together, with your 3 lowest dropped. The quiz average Canvas shows you already leaves out your lowest scores, so enter it as is. "Current pace" assumes your exam and quiz averages stay the same for the rest of the semester, and that each writing part you have left scores the average of the parts you have finished.</p>
       </div>
 </div>
 
@@ -374,8 +374,12 @@ tr.is-pace td { background: var(--accent-soft); }
     const current = wSum ? parts.reduce((a, [v, w]) => a + (w ? v * w : 0), 0) / wSum : null;
 
     const hasData = current != null;
+    // Unfinished writing parts are imputed from the plain (unweighted) mean of the parts already graded,
+    // so a strong Part II counts as much as Part I rather than being weighted 7:3.
+    const writingDone = WRITING.filter((i) => s[i.id] != null).map((i) => s[i.id]);
+    const writingPace = writingDone.length ? writingDone.reduce((a, b) => a + b, 0) / writingDone.length : null;
     const paceFill = {
-      writing: avgs.writing ?? current, exams: avgs.exams ?? current, quiz: avgs.quiz ?? current,
+      writing: writingPace ?? current, exams: avgs.exams ?? current, quiz: avgs.quiz ?? current,
     };
     const floor = project(s, quizScores, { writing: 0, exams: 0, quiz: 0 });
     const ceil = project(s, quizScores, { writing: 100, exams: 100, quiz: 100 });

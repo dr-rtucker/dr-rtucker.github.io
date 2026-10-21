@@ -147,6 +147,19 @@ button:hover { border-color: var(--accent); color: var(--accent); }
 .lnums { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--muted); }
 .lnums b { color: var(--ink); font-family: var(--font-num); font-weight: 700; }
 
+/* Focus areas */
+.focus { display: grid; gap: 12px; }
+.fcard { display: grid; gap: 8px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
+.fcard.top { border-color: var(--pace); }
+.fhead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.fhead h3 { font-family: var(--font-display); font-size: 17px; letter-spacing: 0; text-transform: none; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+.fgain { font-size: 14px; color: var(--muted); }
+.fgain b { font-family: var(--font-num); color: var(--pace); }
+.fcard ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.fcard .chip { color: var(--pace); }
+.praise { margin: 0; padding: 14px 16px; border-radius: 8px; background: var(--accent-soft); font-weight: 600; }
+.praise.empty { background: var(--bg); color: var(--muted); font-weight: 400; }
+
 /* Targets table */
 .tablewrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 15px; }
@@ -234,6 +247,14 @@ tr.is-pace td { background: var(--accent-soft); }
             <span><i class="sw" style="background:var(--pace);width:10px;border-radius:50%"></i>Current pace</span>
           </div>
         </div>
+      </section>
+
+      <section class="panel" aria-labelledby="focusHead">
+        <div style="display:grid;gap:4px">
+          <h2 id="focusHead">Where to focus</h2>
+          <p class="hint">Categories where your average is below 90% and work is still left, ranked by how many course points you could gain by scoring 100% instead of your current average.</p>
+        </div>
+        <div class="focus" id="focus"></div>
       </section>
 
       <section class="panel" aria-labelledby="ledgerHead">
@@ -355,9 +376,53 @@ tr.is-pace td { background: var(--accent-soft); }
     $("maxVal").textContent = fmt(ceil.total);
     $("maxLet").textContent = letterFor(ceil.total);
 
+    renderFocus(avgs, pace, ceil);
     renderRange(floor.total, current, pace && pace.total, ceil.total);
     renderLedger(floor, pace, ceil);
     renderTargets(s, quizScores, floor.total, ceil.total, pace && pace.total);
+  }
+
+  const FOCUS_CUTOFF = 90;
+  const TIPS = {
+    writing: { name: "Writing assignment", tips: [
+      "Come to the Thursday flipped classes and ask questions.",
+      "Begin assignments early. Do not wait until the last week.",
+    ] },
+    exams: { name: "Exams", tips: [
+      "Take the practice quizzes, ideally about 1 hour of quiz practice per textbook chapter.",
+    ] },
+    quiz: { name: "Weekly quizzes", tips: [
+      "Take notes and read closely.",
+      "Use the textbook's visual cues to spot important ideas and concepts: section headers, bolded text, bulleted lists, images and figures.",
+    ] },
+  };
+
+  function renderFocus(avgs, pace, ceil) {
+    const box = $("focus");
+    const graded = Object.keys(TIPS).filter((k) => avgs[k] != null);
+    if (!graded.length) {
+      box.innerHTML = '<p class="praise empty">Enter some scores to see where to focus.</p>';
+      return;
+    }
+    // Gain = points between finishing at your current average and finishing at 100% on what is left.
+    const targets = graded
+      .map((k) => ({ key: k, avg: avgs[k], gain: ceil[k] - pace[k] }))
+      .filter((t) => t.avg < FOCUS_CUTOFF && t.gain > 0.05)
+      .sort((a, b) => b.gain - a.gain);
+    if (!targets.length) {
+      const allStrong = graded.every((k) => avgs[k] >= FOCUS_CUTOFF);
+      box.innerHTML = allStrong
+        ? '<p class="praise">You are in the A range in every category. Keep up the good work!</p>'
+        : '<p class="praise empty">The work you have left is in categories where you are doing well. Keep it up.</p>';
+      return;
+    }
+    box.innerHTML = targets.map((t, i) => `<div class="fcard${i === 0 && targets.length > 1 ? " top" : ""}">
+        <div class="fhead">
+          <h3>${TIPS[t.key].name}${i === 0 && targets.length > 1 ? ' <span class="chip">Biggest opportunity</span>' : ""}</h3>
+          <span class="fgain">Your average <b>${t.avg.toFixed(1)}%</b> · up to <b>+${t.gain.toFixed(1)}</b> course points available</span>
+        </div>
+        <ul>${TIPS[t.key].tips.map((tip) => `<li>${tip}</li>`).join("")}</ul>
+      </div>`).join("");
   }
 
   function renderRange(lo, cur, pace, hi) {

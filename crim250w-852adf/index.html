@@ -189,12 +189,12 @@ tr.is-pace td { background: var(--accent-soft); }
   <header>
     <div class="eyebrow">CRIM 250W · Fall 2026</div>
     <h1>Where is my grade headed?</h1>
-    <p class="lede">Enter the scores you see in Canvas. The page shows your current grade, where you finish if you keep scoring the way you have been, and the highest grade still possible. Nothing you type leaves your browser.</p>
+    <p class="lede">Enter the scores you see in Canvas. The page shows your current grade, where you finish if you keep scoring the way you have been, and the highest grade still possible. Nothing you type is saved or sent anywhere.</p>
   </header>
 
   <div class="layout">
     <form class="panel" id="scoreForm" autocomplete="off" novalidate>
-      <p class="notice" id="exampleNotice">These are example numbers. Replace them with your own scores, or press <b>Clear all</b> to start blank.</p>
+      <p class="notice" id="exampleNotice" hidden>These are example numbers. Replace them with your own scores, or press <b>Clear all</b> to start blank.</p>
 
       <fieldset>
         <legend><h2>Writing assignment</h2><span class="weight">35% of grade</span></legend>
@@ -217,7 +217,7 @@ tr.is-pace td { background: var(--accent-soft); }
 
       <fieldset>
         <legend><h2>Weekly quizzes</h2><span class="weight">20% of grade</span></legend>
-        <div class="row"><label for="qn">Quizzes so far <small>Out of 12. Count missed quizzes.</small></label><input type="number" id="qn" min="0" max="12" step="1" placeholder="0"></div>
+        <div class="row"><label for="qn">Quizzes so far <small>Out of 12, filled in from today's date. Includes missed quizzes.</small></label><input type="number" id="qn" min="0" max="12" step="1" placeholder="0"></div>
         <div class="row"><label for="qa">Your quiz average <small>Percent, as shown in Canvas</small></label><input type="number" id="qa" min="0" max="110" step="any" placeholder="—"></div>
       </fieldset>
 
@@ -303,9 +303,15 @@ tr.is-pace td { background: var(--accent-soft); }
   const EXAMS = [{ id: "e1", w: 22.5 }, { id: "e2", w: 22.5 }];
   const QUIZ_TOTAL = 12, QUIZ_DROPS = 3, QUIZ_WEIGHT = 20;
   const SCALE = [["A", 95], ["A-", 90], ["B+", 87], ["B", 83], ["B-", 80], ["C+", 75], ["C", 70], ["D", 60], ["F", 0]];
-  const EXAMPLE = { w1: 92, w2: 84, w3: "", w4: "", e1: 78, e2: "", qn: 8, qa: 85 };
+  // Quiz due times from Canvas (Tuesdays at end of class); a quiz counts once its due time passes.
+  const QUIZ_DUE = [
+    "2026-09-01T17:00:00Z", "2026-09-08T17:00:00Z", "2026-09-15T17:00:00Z", "2026-09-22T17:00:00Z",
+    "2026-09-29T17:00:00Z", "2026-10-13T17:00:00Z", "2026-10-20T17:00:00Z", "2026-10-27T17:00:00Z",
+    "2026-11-03T18:00:00Z", "2026-11-10T18:00:00Z", "2026-12-01T18:00:00Z", "2026-12-08T18:00:00Z",
+  ];
+  const quizzesSoFar = () => QUIZ_DUE.filter((d) => Date.parse(d) <= Date.now()).length;
+  const EXAMPLE = { w1: 92, w2: 84, w3: "", w4: "", e1: 78, e2: "", qn: Math.max(1, quizzesSoFar()), qa: 85 };
   const FIELDS = ["w1", "w2", "w3", "w4", "e1", "e2", "qn", "qa"];
-  const STORE_KEY = "crim250w-grade-outlook-v1";
   const $ = (id) => document.getElementById(id);
 
   const letterFor = (p) => SCALE.find(([, cut]) => p >= cut)[0];
@@ -501,28 +507,20 @@ tr.is-pace td { background: var(--accent-soft); }
     }).join("");
   }
 
-  function save(isExample) {
-    try {
-      const data = { isExample };
-      for (const f of FIELDS) data[f] = $(f).value;
-      localStorage.setItem(STORE_KEY, JSON.stringify(data));
-    } catch (e) { /* storage unavailable; page still works */ }
-  }
-
   function fill(values, isExample) {
     for (const f of FIELDS) $(f).value = values[f] ?? "";
     $("exampleNotice").hidden = !isExample;
     render();
   }
 
-  let saved = null;
-  try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); } catch (e) { saved = null; }
-  if (saved && !saved.isExample) fill(saved, false); else fill(EXAMPLE, true);
+  // Open blank except for the number of quizzes given so far.
+  const blank = () => ({ qn: quizzesSoFar() });
+  fill(blank(), false);
 
-  $("scoreForm").addEventListener("input", () => { $("exampleNotice").hidden = true; save(false); render(); });
+  $("scoreForm").addEventListener("input", () => { $("exampleNotice").hidden = true; render(); });
   $("scoreForm").addEventListener("submit", (e) => e.preventDefault());
-  $("clearBtn").addEventListener("click", () => { fill({}, false); save(false); });
-  $("exampleBtn").addEventListener("click", () => { fill(EXAMPLE, true); save(true); });
+  $("clearBtn").addEventListener("click", () => fill(blank(), false));
+  $("exampleBtn").addEventListener("click", () => fill(EXAMPLE, true));
 })();
 </script>
 </body>

@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CRIM 012 Grade Outlook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: form column (your scores) beside a results column (outlook, points ledger, targets); stacks on phones */
+:root {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --ink: #161d2b;
+  --muted: #5a6478;
+  --line: #d7dde8;
+  --accent: #1e407c;
+  --accent-soft: #e1e8f4;
+  --available: #a9bde0;
+  --lost: #cdd3de;
+  --pace: #b85f14;
+  --good: #2c7a4b;
+  --warn: #946100;
+  --bad: #ad3b2b;
+  --band-a: #e8edf6;
+  --band-b: #f3f5f9;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-num: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10141c; --surface: #171d28; --ink: #e4e9f2; --muted: #97a2b6; --line: #2b3446;
+    --accent: #8fb0e8; --accent-soft: #1f2c45; --available: #34496f; --lost: #343c4c;
+    --pace: #eb9d55; --good: #63c48b; --warn: #e3b450; --bad: #ef7e6a;
+    --band-a: #1b2436; --band-b: #141a25; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10141c; --surface: #171d28; --ink: #e4e9f2; --muted: #97a2b6; --line: #2b3446;
+  --accent: #8fb0e8; --accent-soft: #1f2c45; --available: #34496f; --lost: #343c4c;
+  --pace: #eb9d55; --good: #63c48b; --warn: #e3b450; --bad: #ef7e6a;
+  --band-a: #1b2436; --band-b: #141a25; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+}
+.page {
+  max-width: 1120px; margin: 0 auto;
+  padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 24px;
+}
+header { display: grid; gap: 6px; }
+.eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); line-height: 1.1; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--font-display); font-size: 20px; margin: 0; text-wrap: balance; }
+h3 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.lede { color: var(--muted); max-width: 68ch; margin: 0; }
+.num { font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+
+.layout { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 860px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: grid; gap: 18px; min-width: 0; }
+.results { display: grid; gap: 24px; min-width: 0; }
+.bottom-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+@media (max-width: 860px) { .bottom-row { grid-template-columns: minmax(0, 1fr); } }
+.bottom-row > .panel { align-content: start; }
+
+/* Form */
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; }
+legend { padding: 0; margin-bottom: 8px; display: flex; justify-content: space-between; width: 100%; gap: 8px; align-items: baseline; }
+legend h2 { font-size: 17px; }
+.weight { font-family: var(--font-num); font-size: 13px; color: var(--muted); }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) 96px; gap: 10px; align-items: center; }
+.row label { font-size: 15px; }
+.row label small { display: block; color: var(--muted); font-size: 13px; }
+input[type="number"] {
+  width: 100%; font: 600 15px var(--font-num); color: var(--ink);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; text-align: right;
+}
+input[type="number"]::placeholder { color: var(--muted); font-weight: 500; }
+input:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hint { font-size: 13px; color: var(--muted); margin: 0; }
+details { border-top: 1px dashed var(--line); padding-top: 10px; }
+summary { cursor: pointer; font-size: 14px; color: var(--accent); font-weight: 600; }
+details .inner { display: grid; gap: 10px; margin-top: 10px; }
+.divider { border: 0; border-top: 1px solid var(--line); margin: 0; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+button {
+  font: 600 14px var(--font-body); border-radius: 6px; padding: 8px 14px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+}
+button:hover { border-color: var(--accent); color: var(--accent); }
+.notice { font-size: 14px; padding: 10px 12px; border-radius: 6px; background: var(--accent-soft); color: var(--ink); margin: 0; }
+.err { color: var(--bad); font-size: 13px; margin: 0; }
+
+/* Headline numbers */
+.headline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 520px) { .headline { grid-template-columns: minmax(0, 1fr); } }
+.stat { display: grid; gap: 2px; padding: 14px 16px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); }
+.stat .label { font-size: 13px; color: var(--muted); font-weight: 600; }
+.stat .value { font: 700 32px/1.1 var(--font-num); font-variant-numeric: tabular-nums; }
+.stat .letter { font: 600 15px var(--font-body); }
+.stat.pace .value { color: var(--pace); }
+.stat.max .value { color: var(--accent); }
+.stat .sub { font-size: 13px; color: var(--muted); }
+
+/* Range bar */
+.range { display: grid; gap: 10px; }
+.track { position: relative; height: 54px; }
+.bands { position: absolute; inset: 0 0 22px 0; display: flex; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+.band { height: 100%; border-right: 1px solid var(--line); position: relative; }
+.band:last-child { border-right: 0; }
+.band:nth-child(odd) { background: var(--band-a); }
+.band:nth-child(even) { background: var(--band-b); }
+.band span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font: 700 12px var(--font-body); color: var(--muted); white-space: nowrap; }
+.span { position: absolute; top: 9px; height: 14px; background: var(--available); border-radius: 7px; opacity: .9; }
+.mark { position: absolute; top: 4px; width: 0; }
+.mark i { position: absolute; left: -8px; top: 0; width: 16px; height: 24px; display: block; }
+.mark.cur i { background: var(--ink); width: 4px; left: -2px; border-radius: 2px; }
+.mark.pace i { background: var(--pace); width: 14px; height: 14px; left: -7px; top: 5px; border-radius: 50%; border: 2px solid var(--surface); }
+.ticks { position: absolute; left: 0; right: 0; bottom: 0; height: 18px; }
+.ticks span { position: absolute; transform: translateX(-50%); font: 500 11px var(--font-num); color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { display: inline-block; width: 14px; height: 10px; border-radius: 3px; }
+
+/* Points ledger */
+.ledger { display: grid; gap: 14px; }
+.lrow { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px; align-items: center; }
+@media (max-width: 520px) { .lrow { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+.lname { font-weight: 600; font-size: 15px; }
+.lname small { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+.lbar-wrap { display: grid; gap: 4px; min-width: 0; }
+.lbar { position: relative; height: 22px; display: flex; border-radius: 4px; overflow: hidden; background: var(--bg); }
+.seg { height: 100%; }
+.seg.secured { background: var(--accent); }
+.seg.avail { background: var(--available); }
+.seg.lost { background: repeating-linear-gradient(135deg, var(--lost) 0 5px, transparent 5px 9px); }
+.lpace { position: absolute; top: -3px; bottom: -3px; width: 3px; background: var(--pace); border-radius: 2px; }
+.lnums { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--muted); }
+.lnums b { color: var(--ink); font-family: var(--font-num); font-weight: 700; }
+
+/* Focus areas */
+.focus { display: grid; gap: 12px; }
+.fcard { display: grid; gap: 8px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
+.fcard.top { border-color: var(--pace); }
+.fhead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.fhead h3 { font-family: var(--font-display); font-size: 17px; letter-spacing: 0; text-transform: none; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+.fgain { font-size: 14px; color: var(--muted); }
+.fgain b { font-family: var(--font-num); color: var(--pace); }
+.fcard ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.fcard .chip { color: var(--pace); }
+.praise { margin: 0; padding: 14px 16px; border-radius: 8px; background: var(--accent-soft); font-weight: 600; }
+.praise.empty { background: var(--bg); color: var(--muted); font-weight: 400; }
+
+/* Targets table */
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); }
+th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+td.need { font-family: var(--font-num); font-variant-numeric: tabular-nums; font-weight: 700; }
+.chip { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.chip.secured { color: var(--good); }
+.chip.ok { color: var(--accent); }
+.chip.stretch { color: var(--warn); }
+.chip.out { color: var(--muted); }
+tr.is-pace td { background: var(--accent-soft); }
+
+.foot { font-size: 13px; color: var(--muted); max-width: 80ch; display: grid; gap: 6px; }
+.foot p { margin: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .span, .mark, .seg, .lpace { transition: left .25s ease, width .25s ease; }
+}
+body { margin: 0; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="eyebrow">CRIM 012 · Fall 2026</div>
+    <h1>Where is my grade headed?</h1>
+    <p class="lede">Enter your scores from Canvas. The page shows your current grade, where you will finish if you keep scoring the way you have been, and the highest grade you can still get. Nothing you type is saved or sent anywhere.</p>
+  </header>
+
+  <div class="layout">
+    <form class="panel" id="scoreForm" autocomplete="off" novalidate>
+      <p class="notice" id="exampleNotice" hidden>These are example numbers. Replace them with your own scores, or press <b>Clear all</b> to start blank.</p>
+
+      <fieldset>
+        <legend><h2>Packback</h2><span class="weight">28% of grade</span></legend>
+        <div class="row"><label for="pn">Packback weeks so far <small>Out of 8, filled in from today's date. Includes any weeks you missed.</small></label><input type="number" id="pn" min="0" max="8" step="1" placeholder="0"></div>
+        <div class="row"><label for="pa">Your Packback average <small>Enter the average shown in Canvas</small></label><input type="number" id="pa" min="0" max="110" step="any" placeholder="—"></div>
+      </fieldset>
+
+      <hr class="divider">
+
+      <fieldset>
+        <legend><h2>Quizzes</h2><span class="weight">15% of grade</span></legend>
+        <div class="row"><label for="qn">Quizzes so far <small>Out of 3, filled in from today's date. Includes any quiz you missed.</small></label><input type="number" id="qn" min="0" max="3" step="1" placeholder="0"></div>
+        <div class="row"><label for="qa">Your quiz average <small>Enter the average shown in Canvas</small></label><input type="number" id="qa" min="0" max="110" step="any" placeholder="—"></div>
+      </fieldset>
+
+      <hr class="divider">
+
+      <fieldset>
+        <legend><h2>Exams</h2><span class="weight">57% of grade</span></legend>
+        <p class="notice">Enter your exam <b>points</b>, out of 100: your score on the rubric <b>+ 1</b>. For example, a rubric score of 84 means you enter 85.</p>
+        <div class="row"><label for="e1">Exam 1 <small>Points out of 100 · 19%</small></label><input type="number" id="e1" min="0" max="100" step="any" placeholder="—"></div>
+        <div class="row"><label for="e2">Exam 2 <small>Points out of 100 · 19%</small></label><input type="number" id="e2" min="0" max="100" step="any" placeholder="—"></div>
+        <div class="row"><label for="e3">Exam 3 <small>Points out of 100 · 19%</small></label><input type="number" id="e3" min="0" max="100" step="any" placeholder="—"></div>
+        <p class="hint">Leave an exam blank if you have not taken it yet.</p>
+      </fieldset>
+
+      <p class="err" id="formError" hidden></p>
+      <div class="actions">
+        <button type="button" id="clearBtn">Clear all</button>
+        <button type="button" id="exampleBtn">Load example</button>
+      </div>
+    </form>
+
+    <div class="results">
+      <section class="panel" aria-labelledby="outlookHead">
+        <h2 id="outlookHead">Your outlook</h2>
+        <div class="headline">
+          <div class="stat"><span class="label">Current grade</span><span class="value" id="curVal">—</span><span class="letter" id="curLet"></span><span class="sub">Graded work only</span></div>
+          <div class="stat pace"><span class="label">At your current pace</span><span class="value" id="paceVal">—</span><span class="letter" id="paceLet"></span><span class="sub">Final grade if you keep it up</span></div>
+          <div class="stat max"><span class="label">Highest possible</span><span class="value" id="maxVal">—</span><span class="letter" id="maxLet"></span><span class="sub">100% on everything left</span></div>
+        </div>
+        <div class="range">
+          <div class="track" id="track">
+            <div class="bands" id="bands"></div>
+            <div class="span" id="rangeSpan"></div>
+            <div class="mark cur" id="markCur"><i></i></div>
+            <div class="mark pace" id="markPace"><i></i></div>
+            <div class="ticks" id="ticks"></div>
+          </div>
+          <div class="legend">
+            <span><i class="sw" style="background:var(--available)"></i>Final grades still possible (0% to 100% on remaining work)</span>
+            <span><i class="sw" style="background:var(--ink);width:4px"></i>Current</span>
+            <span><i class="sw" style="background:var(--pace);width:10px;border-radius:50%"></i>Current pace</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="focusHead">
+        <div style="display:grid;gap:4px">
+          <h2 id="focusHead">Where to focus</h2>
+          <p class="hint">Categories where your average is below 90% and work is still left, ranked by how many course points you could gain by scoring 100% instead of your current average.</p>
+        </div>
+        <div class="focus" id="focus"></div>
+      </section>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <section class="panel" aria-labelledby="ledgerHead">
+      <div style="display:grid;gap:4px">
+        <h2 id="ledgerHead">Your 100 course points</h2>
+        <p class="hint">Each category is worth a set number of points toward your final grade. Points you have <b>earned</b> are yours no matter what. Points <b>still available</b> depend on work you have not done yet. The orange line shows where your current pace lands.</p>
+      </div>
+      <div class="ledger" id="ledger"></div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--accent)"></i>Earned</span>
+        <span><i class="sw" style="background:var(--available)"></i>Still available</span>
+        <span><i class="sw" style="background:repeating-linear-gradient(135deg,var(--lost) 0 3px,transparent 3px 5px);border:1px solid var(--line)"></i>Lost</span>
+        <span><i class="sw" style="background:var(--pace);width:3px"></i>Current pace</span>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="targetHead">
+      <div style="display:grid;gap:4px">
+        <h2 id="targetHead">What it takes</h2>
+        <p class="hint">The average you would need on all remaining work (Packback, quizzes and exams) to finish with each grade. Your current-pace grade is highlighted.</p>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Final grade</th><th>Needs at least</th><th>Average needed on remaining work</th><th>Status</th></tr></thead>
+          <tbody id="targetBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <div class="foot">
+    <p>Weights come from the syllabus: 8 Packback weeks at 3.5% each (28%), 3 quizzes at 5% each (15%), and 3 exams at 19% each (57%). Your current grade counts only work that has been graded so far. "Current pace" assumes your Packback, quiz and exam averages stay the same for the rest of the semester. Packback extra credit is not included.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  const PACKBACK = { total: 8, weight: 28 };
+  const QUIZ = { total: 3, weight: 15 };
+  const EXAMS = [{ id: "e1", w: 19 }, { id: "e2", w: 19 }, { id: "e3", w: 19 }];
+  const SCALE = [["A", 95], ["A-", 90], ["B+", 87], ["B", 83], ["B-", 80], ["C+", 75], ["C", 70], ["D", 60], ["F", 0]];
+  // Due times are Friday 11:59 PM Eastern; a week or quiz counts once its deadline passes.
+  const PACKBACK_DUE = [
+    "2026-09-05T03:59:00Z", "2026-09-19T03:59:00Z", "2026-09-26T03:59:00Z", "2026-10-10T03:59:00Z",
+    "2026-10-24T03:59:00Z", "2026-10-31T03:59:00Z", "2026-11-21T04:59:00Z", "2026-12-05T04:59:00Z",
+  ];
+  const QUIZ_DUE = ["2026-09-12T03:59:00Z", "2026-10-17T03:59:00Z", "2026-11-14T04:59:00Z"];
+  const countSoFar = (dates) => dates.filter((d) => Date.parse(d) <= Date.now()).length;
+  const EXAMPLE = {
+    pn: Math.max(1, countSoFar(PACKBACK_DUE)), pa: 88,
+    qn: Math.max(1, countSoFar(QUIZ_DUE)), qa: 80,
+    e1: 82, e2: "", e3: "",
+  };
+  const FIELDS = ["pn", "pa", "qn", "qa", "e1", "e2", "e3"];
+  const $ = (id) => document.getElementById(id);
+
+  const letterFor = (p) => SCALE.find(([, cut]) => p >= cut)[0];
+  const fmt = (p) => (p == null || !isFinite(p) ? "—" : p.toFixed(1) + "%");
+
+  function readNum(id) {
+    const raw = $(id).value.trim();
+    if (raw === "") return null;
+    const v = Number(raw);
+    return isFinite(v) ? v : null;
+  }
+
+  function readState() {
+    const s = {};
+    for (const f of FIELDS) s[f] = readNum(f);
+    s.pn = s.pn == null ? 0 : Math.max(0, Math.min(PACKBACK.total, Math.round(s.pn)));
+    s.qn = s.qn == null ? 0 : Math.max(0, Math.min(QUIZ.total, Math.round(s.qn)));
+    // A count without an average (or the reverse) can't be scored, so treat it as no graded work.
+    s.packDone = s.pa != null && s.pn > 0 ? s.pn : 0;
+    s.quizDone = s.qa != null && s.qn > 0 ? s.qn : 0;
+    return s;
+  }
+
+  function categoryAverages(s) {
+    let pts = 0, wt = 0;
+    for (const e of EXAMS) if (s[e.id] != null) { pts += s[e.id] * e.w; wt += e.w; }
+    return { packback: s.packDone ? s.pa : null, quiz: s.quizDone ? s.qa : null, exams: wt ? pts / wt : null };
+  }
+
+  // Course points per category when unfinished work is filled with the given scores.
+  function project(s, fill) {
+    const counted = (done, avg, cat, f) => ((done ? avg * done : 0) + f * (cat.total - done)) / cat.total * cat.weight / 100;
+    const packback = counted(s.packDone, s.pa, PACKBACK, fill.packback);
+    const quiz = counted(s.quizDone, s.qa, QUIZ, fill.quiz);
+    const exams = EXAMS.reduce((sum, e) => sum + (s[e.id] != null ? s[e.id] : fill.exams) * e.w / 100, 0);
+    return { packback, quiz, exams, total: packback + quiz + exams };
+  }
+
+  function render() {
+    const s = readState();
+    const err = $("formError");
+    const warn = [];
+    if (s.pa != null && s.pn === 0) warn.push("Enter how many Packback weeks have passed so your Packback average counts.");
+    if (s.qa != null && s.qn === 0) warn.push("Enter how many quizzes have passed so your quiz average counts.");
+    if (EXAMS.some((e) => s[e.id] != null && s[e.id] > 100)) warn.push("Exams are out of 100 points. Check that you entered points, not something else.");
+    err.hidden = !warn.length; err.textContent = warn.join(" ");
+
+    const avgs = categoryAverages(s);
+    // Each piece of graded work counts by its own syllabus weight.
+    const parts = [
+      [avgs.packback, s.packDone * PACKBACK.weight / PACKBACK.total],
+      [avgs.quiz, s.quizDone * QUIZ.weight / QUIZ.total],
+      ...EXAMS.map((e) => [s[e.id], s[e.id] != null ? e.w : 0]),
+    ];
+    const wSum = parts.reduce((a, [, w]) => a + w, 0);
+    const current = wSum ? parts.reduce((a, [v, w]) => a + (w ? v * w : 0), 0) / wSum : null;
+
+    const hasData = current != null;
+    const paceFill = { packback: avgs.packback ?? current, quiz: avgs.quiz ?? current, exams: avgs.exams ?? current };
+    const floor = project(s, { packback: 0, quiz: 0, exams: 0 });
+    const ceil = project(s, { packback: 100, quiz: 100, exams: 100 });
+    const pace = hasData ? project(s, paceFill) : null;
+
+    $("curVal").textContent = fmt(current);
+    $("curLet").textContent = hasData ? letterFor(current) : "Enter a score to begin";
+    $("paceVal").textContent = fmt(pace && pace.total);
+    $("paceLet").textContent = pace ? letterFor(pace.total) : "";
+    $("maxVal").textContent = fmt(ceil.total);
+    $("maxLet").textContent = letterFor(ceil.total);
+
+    renderFocus(avgs, pace, ceil);
+    renderRange(floor.total, current, pace && pace.total, ceil.total);
+    renderLedger(floor, pace, ceil);
+    renderTargets(s, floor.total, ceil.total, pace && pace.total);
+  }
+
+  const FOCUS_CUTOFF = 90;
+  const TIPS = {
+    packback: { name: "Packback", tips: [
+      "Make sure to get your question in by Wednesday night.",
+      "Ask your classmates two questions by Friday.",
+    ] },
+    quiz: { name: "Quizzes", tips: [
+      "Make sure to take the quiz by Friday.",
+    ] },
+    exams: { name: "Exams", tips: [
+      "Come to class.",
+      "Participate in activities and discussions.",
+      "Take notes and study weekly.",
+    ] },
+  };
+
+  function renderFocus(avgs, pace, ceil) {
+    const box = $("focus");
+    const graded = Object.keys(TIPS).filter((k) => avgs[k] != null);
+    if (!graded.length) {
+      box.innerHTML = '<p class="praise empty">Enter some scores to see where to focus.</p>';
+      return;
+    }
+    // Gain = points between finishing at your current average and finishing at 100% on what is left.
+    const targets = graded
+      .map((k) => ({ key: k, avg: avgs[k], gain: ceil[k] - pace[k] }))
+      .filter((t) => t.avg < FOCUS_CUTOFF && t.gain > 0.05)
+      .sort((a, b) => b.gain - a.gain);
+    if (!targets.length) {
+      const allStrong = graded.every((k) => avgs[k] >= FOCUS_CUTOFF);
+      box.innerHTML = allStrong
+        ? '<p class="praise">You are in the A range in every category. Keep up the good work!</p>'
+        : '<p class="praise empty">The work you have left is in categories where you are doing well. Keep it up.</p>';
+      return;
+    }
+    box.innerHTML = targets.map((t, i) => `<div class="fcard${i === 0 && targets.length > 1 ? " top" : ""}">
+        <div class="fhead">
+          <h3>${TIPS[t.key].name}${i === 0 && targets.length > 1 ? ' <span class="chip">Biggest opportunity</span>' : ""}</h3>
+          <span class="fgain">Your average <b>${t.avg.toFixed(1)}%</b> · up to <b>+${t.gain.toFixed(1)}</b> course points available</span>
+        </div>
+        <ul>${TIPS[t.key].tips.map((tip) => `<li>${tip}</li>`).join("")}</ul>
+      </div>`).join("");
+  }
+
+  function renderRange(lo, cur, pace, hi) {
+    // Zoom the axis so the letter bands are readable; start lower only if the floor needs it.
+    const start = Math.max(0, Math.min(50, Math.floor(lo / 10) * 10));
+    const pos = (v) => ((Math.max(start, Math.min(100, v)) - start) / (100 - start)) * 100;
+    const cuts = [start, 60, 70, 75, 80, 83, 87, 90, 95, 100].filter((c) => c >= start);
+    const names = { 60: "D", 70: "C", 75: "C+", 80: "B-", 83: "B", 87: "B+", 90: "A-", 95: "A" };
+    let bandHtml = "";
+    for (let i = 0; i < cuts.length - 1; i++) {
+      const width = pos(cuts[i + 1]) - pos(cuts[i]);
+      const label = names[cuts[i]] || "F";
+      bandHtml += `<div class="band" style="width:${width}%" title="${label}: ${cuts[i]}–${cuts[i + 1]}%"><span>${width > 4 ? label : ""}</span></div>`;
+    }
+    $("bands").innerHTML = bandHtml;
+    const tickVals = cuts.filter((c) => c % 10 === 0 || c === start);
+    $("ticks").innerHTML = tickVals.map((c) => `<span style="left:${pos(c)}%">${c}</span>`).join("");
+    $("rangeSpan").style.left = pos(lo) + "%";
+    $("rangeSpan").style.width = Math.max(0.8, pos(hi) - pos(lo)) + "%";
+    $("markCur").hidden = cur == null;
+    $("markPace").hidden = pace == null;
+    if (cur != null) $("markCur").style.left = pos(cur) + "%";
+    if (pace != null) $("markPace").style.left = pos(pace) + "%";
+  }
+
+  function renderLedger(floor, pace, ceil) {
+    const cats = [
+      { key: "packback", name: "Packback", weight: PACKBACK.weight, note: "8 weeks" },
+      { key: "quiz", name: "Quizzes", weight: QUIZ.weight, note: "3 quizzes" },
+      { key: "exams", name: "Exams", weight: 57, note: "3 exams" },
+    ];
+    const rows = cats.map((c) => ({ name: c.name, note: c.note, weight: c.weight, f: floor[c.key], c: ceil[c.key], p: pace && pace[c.key] }));
+    rows.push({ name: "Whole course", weight: 100, f: floor.total, c: ceil.total, p: pace && pace.total });
+    $("ledger").innerHTML = rows.map((r) => {
+      const pct = (v) => (v / r.weight) * 100;
+      const earned = Math.min(r.f, r.weight), avail = Math.max(0, Math.min(r.c, r.weight) - earned), lost = Math.max(0, r.weight - earned - avail);
+      const paceMark = r.p != null ? `<div class="lpace" style="left:calc(${Math.min(100, pct(r.p))}% - 1.5px)" title="Current pace: ${r.p.toFixed(1)} points"></div>` : "";
+      return `<div class="lrow">
+        <div class="lname">${r.name}<small>${r.weight} points${r.note ? " · " + r.note : ""}</small></div>
+        <div class="lbar-wrap">
+          <div class="lbar" role="img" aria-label="${r.name}: ${earned.toFixed(1)} earned, ${avail.toFixed(1)} still available, ${lost.toFixed(1)} lost, out of ${r.weight}">
+            <div class="seg secured" style="width:${pct(earned)}%"></div>
+            <div class="seg avail" style="width:${pct(avail)}%"></div>
+            <div class="seg lost" style="width:${pct(lost)}%"></div>
+            ${paceMark}
+          </div>
+          <div class="lnums"><span>Earned <b>${earned.toFixed(1)}</b></span><span>Still available <b>${avail.toFixed(1)}</b></span><span>Lost <b>${lost.toFixed(1)}</b></span>${r.p != null ? `<span>Pace <b>${r.p.toFixed(1)}</b></span>` : ""}</div>
+        </div>
+      </div>`;
+    }).join("");
+  }
+
+  function renderTargets(s, lo, hi, pace) {
+    const paceLetter = pace != null ? letterFor(pace) : null;
+    const finalAt = (x) => project(s, { packback: x, quiz: x, exams: x }).total;
+    const nothingLeft = hi - lo < 1e-6;
+    $("targetBody").innerHTML = SCALE.filter(([, cut]) => cut > 0).map(([letter, cut]) => {
+      let need, chip;
+      if (lo >= cut) { need = "Locked in"; chip = '<span class="chip secured">Already earned</span>'; }
+      else if (hi < cut || nothingLeft) { need = "—"; chip = '<span class="chip out">Out of reach</span>'; }
+      else {
+        let a = 0, b = 100;
+        for (let i = 0; i < 40; i++) { const m = (a + b) / 2; if (finalAt(m) >= cut) b = m; else a = m; }
+        need = b.toFixed(1) + "%";
+        chip = b > 92 ? '<span class="chip stretch">Stretch</span>' : '<span class="chip ok">Within reach</span>';
+      }
+      const cls = letter === paceLetter ? ' class="is-pace"' : "";
+      return `<tr${cls}><td><b>${letter}</b></td><td class="num">${cut}%</td><td class="need">${need}</td><td>${chip}</td></tr>`;
+    }).join("");
+  }
+
+  function fill(values, isExample) {
+    for (const f of FIELDS) $(f).value = values[f] ?? "";
+    $("exampleNotice").hidden = !isExample;
+    render();
+  }
+
+  // Open blank except for how many Packback weeks and quizzes have passed.
+  const blank = () => ({ pn: countSoFar(PACKBACK_DUE), qn: countSoFar(QUIZ_DUE) });
+  fill(blank(), false);
+
+  $("scoreForm").addEventListener("input", () => { $("exampleNotice").hidden = true; render(); });
+  $("scoreForm").addEventListener("submit", (e) => e.preventDefault());
+  $("clearBtn").addEventListener("click", () => fill(blank(), false));
+  $("exampleBtn").addEventListener("click", () => fill(EXAMPLE, true));
+})();
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Ongoing research by Riley Tucker using NLP, computer vision, and crowd-sourced data to study place management, urban image cognition, and gang networks." />
+        <meta name="description" content="Riley Tucker's research programs: computational measurement of urban environments and crime, online–offline ecologies of crime, and Discovering Emergent Constructs (DEC)." />
         <meta name="author" content="Riley Tucker" />
         <title>Current Research | Riley Tucker</title>
         <link rel="canonical" href="https://www.rileytucker.com/current-research.html" />
@@ -12,12 +12,12 @@
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Riley Tucker" />
         <meta property="og:title" content="Current Research | Riley Tucker" />
-        <meta property="og:description" content="Ongoing research by Riley Tucker using NLP, computer vision, and crowd-sourced data to study place management, urban image cognition, and gang networks." />
+        <meta property="og:description" content="Riley Tucker's research programs: computational measurement of urban environments and crime, online–offline ecologies of crime, and Discovering Emergent Constructs (DEC)." />
         <meta property="og:url" content="https://www.rileytucker.com/current-research.html" />
         <meta property="og:image" content="https://www.rileytucker.com/assets/img/headshot.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Current Research | Riley Tucker" />
-        <meta name="twitter:description" content="Ongoing research by Riley Tucker using NLP, computer vision, and crowd-sourced data to study place management, urban image cognition, and gang networks." />
+        <meta name="twitter:description" content="Riley Tucker's research programs: computational measurement of urban environments and crime, online–offline ecologies of crime, and Discovering Emergent Constructs (DEC)." />
         <meta name="twitter:image" content="https://www.rileytucker.com/assets/img/headshot.jpg" />
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -53,98 +53,186 @@
         </nav>
         <section class="page-section">
             <div class="container">
-                <h1 class="section-heading mb-4">
+                <h1 class="section-heading page-title mb-4">
                     <span class="section-heading-upper">Current Research in Computational Criminology</span>
                 </h1>
-                <p class="eyebrow">Natural Language Processing · Yelp Reviews</p>
-                <div class="research-block">
-                    <div class="research-media">
-                        <picture>
-                            <source srcset="assets/img/dalle_placemanager.webp" type="image/webp" />
-                            <img class="product-item-img" src="assets/img/dalle_placemanager.png" alt="AI-generated illustration representing commercial place management" />
-                        </picture>
-                    </div>
-                    <div class="research-body">
-                        <h2 class="section-heading mb-3">
-                            <span class="section-heading-upper">Place Management and Crime</span>
-                        </h2>
-                        <p>An emerging perspective in criminology suggests that we can better understand
-                            where crime occurs by considering the characteristics of building owners and place managers.
-                            To get a better understanding of how commercial businesses are managed in relation to crime,
-                            I have collected Yelp reviews from 30 American cities. Using online reviewers as 'eyes on the
-                            'street', I am analyzing these reviews using natural language processing and machine learning techniques to investigate
-                            how management characteristics relate to crime and to explore how the relationship between managers and crime
-                            changes across urban environments.
-                        </p>
-                    </div>
-                </div>
             </div>
         </section>
-        <section class="page-section">
+        <section class="page-section" id="urban-crime-measurement">
             <div class="container">
-                <p class="eyebrow">Computer Vision · Google Street View</p>
+                <p class="eyebrow">Computer Vision · Ambient Populations · Natural Language Processing</p>
                 <div class="research-block">
                     <div class="research-media">
                         <picture>
-                            <source srcset="assets/img/dalle_carcamera.webp" type="image/webp" />
-                            <img class="product-item-img" src="assets/img/dalle_carcamera.png" alt="AI-generated illustration representing computer-vision analysis of street-level imagery" />
+                            <source srcset="assets/img/eyes_gist_maps.webp" type="image/webp" />
+                            <img class="research-figure" src="assets/img/eyes_gist_maps.png" alt="Four maps of Chicago census tracts showing spatial variation in AI-estimated street-view gists: preference, complexity, memorability, and transparency" loading="lazy" />
                         </picture>
+                        <p class="research-caption">Tract-level variation in AI-estimated street-view gists across Chicago, from "Eyes" on the Street (2026).</p>
                     </div>
                     <div class="research-body">
                         <h2 class="section-heading mb-3">
-                            <span class="section-heading-upper">Image Cognition &amp; Crime</span>
+                            <span class="section-heading-upper">Urban Crime Measurement</span>
                         </h2>
-                        <p>I believe the social sciences can be pushed forward by moving beyond traditional forms of data. In a project with
-                            my colleagues at the Environmental Neuroscience Lab, we have been exploring the potential of creating ecological
-                            measures through urban images. By using a neural network-based approach to computer vision, we have trained models
-                            that learned from human raters so they can look at images and tell us about the built environment. By using this model
-                            to measure features in 200,000+ Google Streetview images, we can measure concepts such as aesthetic value and ease of
-                            natural surveillance across Chicago streets to get a better understanding of where and why crime proliferates.
+                        <p>Criminological theories often explain crime through characteristics of places and the people in
+                            them: what environments look like, how they are managed, and who is present over the course of
+                            the day. These characteristics are central to theory but difficult to observe systematically,
+                            particularly at scale. Census and administrative data remain indispensable, yet they describe
+                            places largely through static, residential, and officially recorded attributes, and they often miss
+                            the fine-grained, dynamic, and experiential features that theory suggests matter. My foundational research program develops
+                            computational measures that capture dimensions of urban environments often overlooked by conventional
+                            data sources, and uses them to revisit longstanding questions about places and crime.
+                        </p>
+                        <p>The first concerns the built environment. Crime prevention through environmental design (CPTED)
+                            holds that the visual character of streets shapes crime, but systematic observation of streets has
+                            traditionally been costly and limited in scope. Drawing on cognitive psychology, my collaborators and
+                            I trained neural networks on human ratings of Google Street View images to estimate broad perceptual
+                            "gists" of street scenes, such as preference, complexity, and enclosure, across more than 187,000
+                            Chicago images. These measures allowed us to ask how the overall impression of an environment, and
+                            not only the objects it contains, relates to crime.
+                        </p>
+                        <p>The second concerns who occupies places. Neighborhood research has typically characterized places
+                            by their residents, but the people who work in, visit, and pass through a place can differ
+                            substantially from those who live there. Using geotagged social media and mobility data, I measure
+                            these ambient populations, examining how the presence of tourists and commuters relates to crime and
+                            whether the racial heterogeneity of a neighborhood's users, rather than its residents, helps explain
+                            neighborhood differences in crime.
+                        </p>
+                        <p>The third concerns how places are run. Place management is central to explanations of why crime
+                            concentrates at particular properties, but it is rarely recorded in business or administrative
+                            data. Online reviews offer one window into how places are experienced and operated: in Boston,
+                            parcels with higher-rated businesses on Yelp had lower rates of disturbances. Because reviews contain
+                            far richer information than a star rating, my ongoing work uses natural language processing to
+                            examine what reviewers say about how places are managed, with the goal of identifying more
+                            precisely which aspects of management matter for crime.
+                        </p>
+                        <p class="mt-3"><em>Related publications:</em>
+                            <a href="papers.html#eyes-street-computer-vision">"Eyes" on the Street</a> ·
+                            <a href="papers.html#twitter-based-measure-racial">Ambient Racial Heterogeneity</a> ·
+                            <a href="papers.html#commercial-place-managers-explain">Commercial Place Managers</a> ·
+                            <a href="papers.html#tweets-help-understand-crime">Who 'Tweets' Where and When</a>
                         </p>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="page-section">
+        <section class="page-section" id="online-offline-ecologies">
             <div class="container">
-                <p class="eyebrow">NLP · Crowd-Sourced Social Media Data</p>
+                <p class="eyebrow">Reddit · Dark Web · Network Analysis</p>
                 <div class="research-block">
                     <div class="research-media">
                         <picture>
-                            <source srcset="assets/img/dalle_rapfan.webp" type="image/webp" />
-                            <img class="product-item-img" src="assets/img/dalle_rapfan.png" alt="AI-generated illustration representing online community research on gang culture" />
+                            <source srcset="assets/img/ebk_gang_network.webp" type="image/webp" />
+                            <img src="assets/img/ebk_gang_network.png" alt="Network visualization of a crowd-sourced social network of gang-affiliated individuals in Chicago, with nodes colored by gang set" loading="lazy" />
                         </picture>
+                        <p class="research-caption">Crowd-sourced gang social network built from Reddit discussions, from "EBK" (2025).</p>
                     </div>
                     <div class="research-body">
                         <h2 class="section-heading mb-3">
-                            <span class="section-heading-upper">Crowd-Sourced Gang Research</span>
+                            <span class="section-heading-upper">Online–Offline Ecologies</span>
                         </h2>
-                        <p>While online-based research often analyzes content to understand the people behind the keyboards,
-                            there are also increasing opportunities to learn from the crowd wisdom of online "experts".
-                            To this end, I am leading a team that is conducting research on gangs through
-                            an online messageboard for fans of Chicago rap and gang culture. Through natural language processing
-                            strategies, we have trained AI to read the message board and have generated a social network
-                            of gang-affiliated people associated with Southside gangs. By comparing our data to official records
-                            and by replicating analyses conducted with other sources of data on gangs, we can show that our
-                            crowd-sourced dataset is a valid source for scholarly research. Because research on gangs is often limited
-                            to scholars who collaborate with public officials, generating crowd-sourced data from publicly available content
-                            can allow new voices to join the conversations around gang violence and criminal justice policy.
+                        <p>Online communities and marketplaces are not simply repositories of digital behavior. They are socially
+                            organized environments, with their own communities, relationships, norms, and opportunities, in which
+                            harmful and criminal behavior emerges and unfolds. They are also tied to offline places, groups, and
+                            institutions. In this emerging research program, I study how the structure and social organization of
+                            online environments shape harmful behavior, and how these processes intersect with offline social life.
+                            The work carries ecological criminology's long-standing interest in how environments shape behavior into
+                            digital settings, without assuming that online environments work the same way physical ones do.
                         </p>
-                        <p class="mt-3"><em>Now published — see "EBK" on the <a href="papers.html#ebk">Papers</a> page.</em></p>
+                        <p>One line of this work treats online discussion as a window into offline social relationships that are
+                            difficult to observe through conventional methods. Using natural language processing of Reddit
+                            discussions about Chicago, my collaborators and I built a social network of 271 gang-affiliated
+                            individuals across 11 South Side gang sets. Ties to homicide victims and central positions in the
+                            network, rather than gang affiliation, were associated with greater risk of victimization, offering
+                            quantitative support for recent ethnographic accounts of how gang dynamics have changed.
+                        </p>
+                        <p>A second line asks how harmful behavior is distributed across online communities. Using large-scale
+                            Reddit data, I am examining cyber-aggression and hate speech across communities, with attention to how
+                            community characteristics, individual patterns of participation, and broader social contexts may shape
+                            where aggressive behavior occurs and what form it takes, and how online harms connect to offline
+                            institutions and communities.
+                        </p>
+                        <p>A third line turns to the organization of illicit markets. Dark web marketplaces connect buyers and
+                            vendors who may be widely dispersed, yet the trade they support remains rooted in offline places and
+                            economies. Using marketplace data, I map the international geographic network of illicit transactions,
+                            examining how its structure relates to vendor supply and demand in order to better understand the
+                            geosocial dynamics of the global drug trade.
+                        </p>
+                        <p class="mt-3"><em>Related publication:</em>
+                            <a href="papers.html#ebk">"EBK"</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
+        <section class="page-section" id="discovering-emergent-constructs">
+            <div class="container">
+                <p class="eyebrow">Representation Learning · Theory Development</p>
+                <div class="research-block research-block--reverse">
+                    <div class="research-body">
+                        <h2 class="section-heading mb-3">
+                            <span class="section-heading-upper">Discovering Emergent Constructs (DEC)</span>
+                        </h2>
+                        <p>Quantitative criminology usually begins with theory: researchers identify a construct and then design
+                            measures to capture it. This approach is powerful, but it means we mostly measure what we already know to
+                            look for. Discovering Emergent Constructs (DEC) is a framework I am developing for a complementary
+                            approach, in which computational representation learning is used to identify <em>candidate
+                            constructs</em>: patterns in complex data that are not defined in advance but are statistically
+                            associated with outcomes of interest.
+                        </p>
+                        <p>A candidate construct is a starting point for theoretical work, not a finding in itself. DEC follows a
+                            four-stage procedure that ends in abductive interpretation, which can lead to one of four outcomes: it can
+                            corroborate existing theory, suggest refinements to it, point to a construct that has not been
+                            recognized, or reveal higher-order patterns in how constructs relate to one another. Its purpose is to
+                            inform theory development, not simply to improve predictive accuracy.
+                        </p>
+                        <p>My initial DEC research applies the framework to urban environments. Vision-language models were used to
+                            generate descriptions of 187,048 Google Street View images from Chicago, and these descriptions were
+                            semantically embedded and analyzed to identify nine candidate constructs that predict micro-spatial
+                            differences in robbery beyond traditional controls and standard computer vision measures. Interpreting
+                            these candidates suggested that crime-associated visual patterns appear as configurations of
+                            co-occurring environmental features that cut across conventional theoretical categories.
+                        </p>
+                        <p>Although this first application uses street-view imagery, DEC is not a computer vision technique or a
+                            method specific to urban crime. It is intended as a general approach to computationally assisted
+                            construct discovery that could be applied to text, images, networks, and other kinds of data, and to
+                            substantive questions well beyond the study of place.
+                        </p>
+                        <p class="mt-3"><em>Preprint:</em>
+                            <a href="papers.html#discovering-emergent-constructs">Discovering Emergent Constructs</a> ·
+                            <a href="https://www.crimrxiv.com/pub/1ojheepz/release/1" target="_blank" rel="noopener">CrimRxiv</a>
+                        </p>
+                    </div>
+                    <figure class="research-media research-dec-figure">
+                        <a href="assets/img/dec_figure1.png" class="figure-expand" data-bs-toggle="modal" data-bs-target="#decFigureModal" aria-label="Enlarge diagram: the four stages of Discovering Emergent Constructs">
+                            <picture>
+                                <source srcset="assets/img/dec_figure1.webp" type="image/webp" />
+                                <img src="assets/img/dec_figure1.png" alt="Diagram of the four DEC stages: learn a representation of complex data, identify candidate constructs, test candidates against outcomes, and theorize about high-priority candidates" loading="lazy" />
+                            </picture>
+                        </a>
+                        <figcaption class="research-caption">The four stages of Discovering Emergent Constructs (click to enlarge).</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <!-- Enlarged DEC diagram (Bootstrap modal: Esc, backdrop click, and close button all dismiss it) -->
+        <div class="modal figure-modal" id="decFigureModal" tabindex="-1" aria-labelledby="decFigureModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="modal-title research-caption" id="decFigureModalLabel">The four stages of Discovering Emergent Constructs</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close enlarged diagram"></button>
+                    </div>
+                    <div class="modal-body">
+                        <a href="assets/img/dec_figure1.png" target="_blank" rel="noopener" class="figure-fullsize" title="Open full-size image in a new tab">
+                            <img src="assets/img/dec_figure1.png" alt="Diagram of the four DEC stages: learn a representation of complex data, identify candidate constructs, test candidates against outcomes, and theorize about high-priority candidates" loading="lazy" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     <footer class="footer text-faded text-center py-5">
         <p>rqt5439@psu.edu — <a href="assets/cv_26_8_11.pdf" download>Download CV</a> — <a href="https://scholar.google.com/citations?hl=en&user=j8TVqU8AAAAJ" target="_blank" rel="noopener">Google Scholar</a></p>
-        <div class="container"><p class="m-0 small"><a href="https://www.vecteezy.com/free-photos">Free Stock photos by Vecteezy</a></p></div>
     </footer>
-    <!-- CSS to crop a centimeter worth of pixels off the images to get rid of the dall-e logo -->
-    <style>
-        .product-item-img {
-            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1cm), 0 100%);
-        }
-    </style>
         
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
